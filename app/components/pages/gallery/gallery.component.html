@@ -1,0 +1,11 @@
+<div class="container-2 w-full h-fit pt-12 sm:pt-24 sm:p-8">
+    <div class="px-8 md:px-10 py-4 pt-20 sm:pt-16">
+        <div class="">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div *ngFor="let image of data?.images; let i = index" class="aspect-square overflow-hidden">
+                    <img class="h-full w-full object-cover rounded-lg" [src]="image" alt="Gallery Image {{ i }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

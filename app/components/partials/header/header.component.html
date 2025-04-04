@@ -1,0 +1,57 @@
+<nav class="h-16 md:h-[85px] w-full p-1 px-3 md:px-12 mt-4 fixed z-[1000]">
+    <div class="flex justify-between items-center h-full px-3 sm:px-12 rounded-lg border border-emerald-200 md:border-0"
+        [ngStyle]="{ 'background': headerBackgroundColor }" style="backdrop-filter: blur(8px);">
+
+        <div class="cursor-pointer" routerLink="/">
+            <img href="https://www.bibaasia.com" target="_blank" src="../../../../assets/header/Logo.png" alt="Logo"
+                class=" h-12 md:h-[70px] object-cover bg-no-repeat">
+        </div>
+
+        <div class="humburgur block md:hidden">
+            <a class="cursor-pointer" (click)="toggleMenu()">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3.5 7.875C3.5 7.39175 3.89175 7 4.375 7H23.625C24.1082 7 24.5 7.39175 24.5 7.875C24.5 8.35825 24.1082 8.75 23.625 8.75H4.375C3.89175 8.75 3.5 8.35825 3.5 7.875ZM3.5 14C3.5 13.5168 3.89175 13.125 4.375 13.125H23.625C24.1082 13.125 24.5 13.5168 24.5 14C24.5 14.4832 24.1082 14.875 23.625 14.875H4.375C3.89175 14.875 3.5 14.4832 3.5 14ZM13.125 20.125C13.125 19.6418 13.5168 19.25 14 19.25H23.625C24.1082 19.25 24.5 19.6418 24.5 20.125C24.5 20.6082 24.1082 21 23.625 21H14C13.5168 21 13.125 20.6082 13.125 20.125Z"
+                        fill="white" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="hidden md:block">
+            <div class="md:flex md:space-x-8 md:flex-row md:items-center">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                    class="text-white text-[20px] hover:text-primary transition">Home</a>
+                <a routerLink="/about" routerLinkActive="active"
+                    class="text-white text-lg hover:text-primary transition">About Us</a>
+                <a routerLink="/blogs" routerLinkActive="active"
+                    class="text-white text-lg hover:text-primary transition">Blogs</a>
+                <div class="relative group">
+                    <button (click)="toursSection()"
+                        class="text-white flex items-center text-lg hover:text-primary transition ">Tours
+                    </button>
+
+                </div>
+                <a routerLink="/contact" routerLinkActive="active"
+                    class="text-white text-lg hover:text-primary transition">Contact Us</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<div class="side-bar">
+    <p-sidebar [(visible)]="menuOpen" position="right" styleClass="rounded-l-[20px]">
+        <div class="flex space-y-4 flex-col items-start" (click)="toggleMenu()">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                class="text-primary text-lg transition">Home</a>
+            <a routerLink="/about" routerLinkActive="active" class="text-primary text-lg transition">About Us</a>
+            <a routerLink="/blogs" routerLinkActive="active" class="text-primary text-lg transition">Blogs</a>
+            <div class="relative group">
+                <button (click)="toursSection()"
+                    class="text-primary flex items-center text-lg hover:text-primary transition ">Tours
+                </button>
+
+            </div>
+            <a routerLink="/contact" routerLinkActive="active" class="text-primary text-lg transition">Contact Us</a>
+        </div>
+    </p-sidebar>
+</div>

@@ -1,0 +1,157 @@
+<div class="flex h-screen justify-center items-center " *ngIf="!allSpots?.length && spotStatus">
+    <i class="pi pi-spin pi-spinner alimate-spin text-[#3A5C41]" style="font-size: 2rem"></i>
+</div>
+
+<div class="flex h-screen justify-center items-center " *ngIf="!allSpots.length && !spotStatus">
+    <p class="text-lg font-medium text-primary">Spots not found !</p>
+</div>
+
+<div class="container-1 w-full h-screen pt-10 relative"
+    [ngStyle]="{ 'background-image': 'url(' + tourDetails?.images[0] + ')' }" *ngIf="allSpots.length">
+
+    <div class="absolute bottom-[10%] w-full flex justify-center">
+        <div class="bg-white rounded-3xl p-6 w-[90%]">
+            <div class="flex justify-between mb-6">
+                <div
+                    class="text-xl text-primary sm:text-[28px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
+                    {{tourDetails?.name}}</div>
+                <!-- //button  -->
+                <div class="flex justify-center items-center gap-2" *ngIf="allToursDetails.length">
+                    <div (click)="onPrev()" [ngClass]="currentTourIndex > 0?'flex':' hidden'"
+                        class="w-10 h-10 rounded-full bg-white  justify-center items-center cursor-pointer"
+                        style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
+                        <svg width="20" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.406796 8.88352C-0.135599 9.50013 -0.135599 10.4999 0.406796 11.1165L7.8142 19.5375C8.3566 20.1542 9.23599 20.1542 9.77839 19.5375C10.3208 18.9209 10.3208 17.9212 9.77839 17.3046L4.74196 11.5789L23.6111 11.5789C24.3782 11.5789 25 10.872 25 10C25 9.12797 24.3782 8.42105 23.6111 8.42105L4.74196 8.42105L9.77839 2.69543C10.3208 2.07881 10.3208 1.07908 9.77839 0.462463C9.23599 -0.154154 8.3566 -0.154154 7.8142 0.462463L0.406796 8.88352Z"
+                                fill="#869F44" />
+                        </svg>
+
+                    </div>
+                    <div (click)="onNext()" [ngClass]="currentTourIndex < allToursDetails.length - 1?'flex':' hidden'"
+                        class="w-10 h-10 rounded-full bg-white  justify-center items-center cursor-pointer"
+                        style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
+                        <svg width="20" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M24.5932 11.1165C25.1356 10.4999 25.1356 9.50013 24.5932 8.88352L17.1858 0.462464C16.6434 -0.154153 15.764 -0.154153 15.2216 0.462464C14.6792 1.07908 14.6792 2.07882 15.2216 2.69543L20.258 8.42105L1.38889 8.42105C0.621828 8.42105 -4.75231e-07 9.12797 -4.37114e-07 10C-3.98996e-07 10.872 0.621828 11.5789 1.38889 11.5789L20.258 11.5789L15.2216 17.3046C14.6792 17.9212 14.6792 18.9209 15.2216 19.5375C15.764 20.1542 16.6434 20.1542 17.1858 19.5375L24.5932 11.1165Z"
+                                fill="#869F44" />
+                        </svg>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-1 mb-4">
+                <div>
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M6 21.772C5.58579 21.772 5.25 22.1078 5.25 22.522C5.25 22.9362 5.58579 23.272 6 23.272V21.772ZM18 23.272C18.4142 23.272 18.75 22.9362 18.75 22.522C18.75 22.1078 18.4142 21.772 18 21.772V23.272ZM18.75 10.022C18.75 11.7284 17.6599 13.9356 16.1547 15.7688C15.4148 16.6701 14.6072 17.4398 13.8465 17.9774C13.0624 18.5314 12.4227 18.772 12 18.772V20.272C12.8898 20.272 13.8438 19.816 14.7121 19.2024C15.6038 18.5723 16.5071 17.7035 17.314 16.7206C18.9026 14.7857 20.25 12.2429 20.25 10.022H18.75ZM12 18.772C11.5925 18.772 10.9595 18.5213 10.171 17.9293C9.409 17.3573 8.59932 16.5398 7.85679 15.5887C6.34675 13.6546 5.25 11.347 5.25 9.63308H3.75C3.75 11.8466 5.09075 14.4833 6.67446 16.5118C7.4788 17.5421 8.38006 18.4605 9.27041 19.1289C10.1343 19.7775 11.095 20.272 12 20.272V18.772ZM5.25 9.63308C5.25 6.00256 8.47857 3.27197 12 3.27197V1.77197C7.78944 1.77197 3.75 5.04138 3.75 9.63308H5.25ZM12 3.27197C15.4938 3.27197 18.75 5.97701 18.75 10.022H20.25C20.25 5.06694 16.2382 1.77197 12 1.77197V3.27197ZM14.25 9.52197C14.25 10.7646 13.2426 11.772 12 11.772V13.272C14.0711 13.272 15.75 11.593 15.75 9.52197H14.25ZM12 11.772C10.7574 11.772 9.75 10.7646 9.75 9.52197H8.25C8.25 11.593 9.92893 13.272 12 13.272V11.772ZM9.75 9.52197C9.75 8.27933 10.7574 7.27197 12 7.27197V5.77197C9.92893 5.77197 8.25 7.4509 8.25 9.52197H9.75ZM12 7.27197C13.2426 7.27197 14.25 8.27933 14.25 9.52197H15.75C15.75 7.4509 14.0711 5.77197 12 5.77197V7.27197ZM6 23.272H18V21.772H6V23.272Z"
+                            fill="#7FBE30" />
+                    </svg>
+
+                </div>
+                <div
+                    class="text-[#606060] text-lg sm:text-xl md:text-[28px] leading-5 leading-7 leading-[35px] font-normal">
+                    {{tourDetails?.address}}</div>
+            </div>
+            <div class="text-base md:text-lg font-light">
+                {{tourDetails?.description}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-2 w-full h-fit pt-10" *ngIf="spotStatus">
+    <div class="header w-full flex justify-center items-center gap-2 border-b pb-8">
+        <div class="text-base sm:text-lg font-medium ">
+            Want to explore ?
+        </div>
+        <div>
+            <p-button label="Check out now" routerLink="/tours/checkout" icon="pi pi-arrow-right" iconPos="right"
+                styleClass="px-6 sm:px-10 py-2 sm:py-4"></p-button>
+        </div>
+    </div>
+    <div class="tours-list px-4 sm:px-8 md:px-10 py-8">
+        <div class="buttons flex gap-8 flex-nowrap overflow-auto scrollable-content">
+            <ng-container *ngFor="let spot of allSpots;let i=index">
+                <p-button [label]="spot.name" (onClick)="showSpot(i)"
+                    styleClass="px-10  text-nowrap uppercase font-light"
+                    [styleClass]="spot.show?'':'p-button-outlined  p-button-raised'"></p-button>
+            </ng-container>
+
+            <!-- <p-button label="White Beach" styleClass="px-10 text-nowrap"></p-button>
+
+            <p-button label="Diniwid Beach"
+                styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button>
+
+            <p-button label="Mount Luho Viewpoint"
+                styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button>
+
+            <p-button label="Bulabog Beach"
+                styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button> -->
+        </div>
+        <div class="tours-details">
+            <div class="px-4 sm:px-6 md:px-8 py-8">
+                <!-- details of tours  -->
+                <div class="mb-8" *ngFor="let tip of spot.tips;">
+                    <div class="flex gap-2 mb-4">
+                        <div class="icon ">
+                            <!-- <svg width="30" height="31" viewBox="0 0 30 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.9999 30.53C18.4095 30.532 21.7037 29.2951 24.2695 27.0496C26.8352 24.804 28.4977 21.7028 28.9476 18.323C29.3975 14.9431 28.6041 11.515 26.7151 8.67649C24.826 5.83799 21.9701 3.78248 18.6786 2.8925C18.7588 2.61323 18.773 2.31914 18.7201 2.03344C18.6672 1.74775 18.5486 1.47826 18.3737 1.24625C18.1987 1.01424 17.9723 0.826056 17.7122 0.696549C17.4521 0.567042 17.1655 0.499756 16.8749 0.500001H13.1249C12.8343 0.499756 12.5477 0.567042 12.2876 0.696549C12.0275 0.826056 11.8011 1.01424 11.6261 1.24625C11.4512 1.47826 11.3326 1.74775 11.2797 2.03344C11.2268 2.31914 11.241 2.61323 11.3211 2.8925C8.02972 3.78248 5.17375 5.83799 3.28473 8.67649C1.3957 11.515 0.602301 14.9431 1.05218 18.323C1.50206 21.7028 3.16457 24.804 5.73031 27.0496C8.29606 29.2951 11.5903 30.532 14.9999 30.53ZM27.1874 16.4675C27.1874 19.6998 25.9034 22.7998 23.6178 25.0854C21.3322 27.371 18.2322 28.655 14.9999 28.655C11.7676 28.655 8.66763 27.371 6.38203 25.0854C4.09643 22.7998 2.8124 19.6998 2.8124 16.4675C2.8124 13.2352 4.09643 10.1352 6.38203 7.84964C8.66763 5.56404 11.7676 4.28 14.9999 4.28C18.2322 4.28 21.3322 5.56404 23.6178 7.84964C25.9034 10.1352 27.1874 13.2352 27.1874 16.4675Z"
+                                    fill="#869F44" />
+                                <path
+                                    d="M13.0124 14.4498L22.2936 9.14355L16.9874 18.4248L7.70801 23.7311L13.0124 14.4498Z"
+                                    fill="#869F44" />
+                            </svg> -->
+                            <img src="{{tip.icon}}" alt="icon" class="w-8 h-8 rounded-full object-cover">
+                            <!-- {{tip.icon}} -->
+                        </div>
+                        <div
+                            class="heading text-primary text-lg sm:text-xl md:text-[28px] leading-[25px] sm:leading-[30px] md:leading-[35px]">
+                            {{tip.title}}
+                        </div>
+                    </div>
+                    <div class="heading-details sm:text-lg font-normal text-[#606060] word-inline">
+                        {{tip.desc}}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-start">
+                    <div class="title text-[#606060] font-bold text-lg sm:text-xl md:text-[28px] mb-2 sm:mb-8">
+                        Activities that you’d enjoy
+                    </div>
+                    <div class="h-[350px] sm:h-auto max-h-[600px] w-full sm:px-10" id="carousel"
+                        *ngIf="allActivities.length">
+                        <p-carousel [value]="allActivities" [numVisible]="1" [numScroll]="1" [circular]="true"
+                            class="h-full w-full relative">
+                            <ng-template pTemplate="item" let-spot class="h-full w-full">
+                                <div class="relative h-full w-full">
+                                    <div
+                                        class="sm:max-h-screen h-full w-full overflow-hidden rounded-2xl sm:rounded-3xl p-1">
+                                        <img [src]="spot.image" alt="banner"
+                                            class="w-full sm:max-h-[500px] md:min-h-[400px] h-full object-cover rounded-2xl sm:rounded-3xl" />
+                                    </div>
+
+                                    <!-- Overlay -->
+                                    <div class="absolute inset-0 bg-black opacity-60 rounded-2xl sm:rounded-3xl"></div>
+
+                                    <!-- Text Content -->
+                                    <div
+                                        class="absolute flex flex-col justify-center items-center top-[18%] md:top-[15%] lg:top-[20%] px-4 sm:px-4 md:px-8 lg:px-12 z-10">
+                                        <div
+                                            class="text-[20px] sm-text-[30px] md:text-[40px] font-semibold tracking-[2%] text-white text-center">
+                                            {{spot.name}}
+                                        </div>
+                                        <div
+                                            class="mt-2 w-100 sm:w-[90%] md:w-[95%] lg:w-[80%] xl:w-[70%] text-center text-[10px] sm:text-[12px] md:text-[16px] lg:text-[18px] md:leading-5 lg:leading-6 font-normal text-white">
+                                            {{spot.description}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-carousel>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

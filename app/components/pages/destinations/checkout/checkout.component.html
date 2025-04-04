@@ -1,0 +1,558 @@
+<div class="container-1 w-full h-fit pt-16">
+    <div class="header px-4 sm:px-8 md:px-12 pt-8">
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2"><span routerLink="/"
+                class=" cursor-pointer">Home</span> > <span (click)="goBack()"
+                class=" cursor-pointer">{{allToursDetails[0].name}}</span> <span class="text-primary"> >
+                Confira</span>
+        </div>
+        <div class="flex justify-between items-center pb-4 border-b">
+            <div (click)="goBack()"
+                class="heading cursor-pointer flex gap-4  items-center text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium">
+                <span class="text-black text-2xl">
+                    <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M3.34299 9.00001L10.414 16.071L8.99999 17.485L1.22199 9.70701C1.03451 9.51949 0.929199 9.26518 0.929199 9.00001C0.929199 8.73485 1.03451 8.48054 1.22199 8.29301L8.99999 0.515015L10.414 1.92901L3.34299 9.00001Z"
+                            fill="black" />
+                    </svg>
+
+                </span> Checkout
+            </div>
+        </div>
+    </div>
+    <div class="details px-4 sm:px-8 md:px-12">
+        <div class="bg-[#0E3D4D] rounded-xl w-full h-[150px] my-6">
+            <div class="flex h-full flex-row justify-center items-center ">
+                <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
+                    <div class="rounded-full w-6 h-6 bg-[#9BFF1C] flex pl-[7px]">1</div>
+                    <div class="text-[#9BFF1C] text-base sm:text-lg md:text-xl font-semibold">Planeje um passeio</div>
+                    <span class="absolute top-[20%] left-[52%] w-full border border-[#9BFF1C]"></span>
+                </div>
+
+
+                <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
+                    <div class="rounded-full w-6 h-6 pl-[7px]"
+                        [ngClass]="checkoutStatus.userDetailsStatus?'bg-[#9BFF1C]':'bg-white'">2</div>
+                    <div class=" text-base sm:text-lg md:text-xl font-semibold"
+                        [ngClass]="checkoutStatus.userDetailsStatus?'text-[#9BFF1C]':'text-white'">Seus detalhes</div>
+                    <span class="absolute top-[20%] left-[52%] w-full border border-white"></span>
+
+                </div>
+                <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
+                    <div class="rounded-full w-6 h-6 bg-white pl-[7px]">3</div>
+                    <div class="text-white text-base sm:text-lg md:text-xl font-semibold">Pagamento</div>
+                </div>
+            </div>
+        </div>
+        <!-- for select tours details  -->
+        <div class="tours-details" *ngIf="!(checkoutStatus.userDetailsStatus || checkoutStatus.paymentStatus)">
+            <div class=" rounded-xl w-full h-[200px] sm:h-[150px] my-6 overflow-hidden rounded-xl relative">
+                <div class="relative h-full w-full overflow-hidden rounded-xl">
+                    <img class="rounded-xl h-full w-full object-cover" [src]="allToursDetails[0].images[0]" alt="image">
+                    <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-transparent rounded-xl"></div>
+
+                </div>
+                <div class="absolute w-full top-[20px] left-[10px] date-picker">
+                    <div class="w-full flex justify-between items-center">
+                        <div class="flex flex-col gap-2 justify-between">
+                            <div class="flex items-center">
+                                <div
+                                    class="mr-4 text-primary text-[25px] sm:text-[35px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
+                                    {{allToursDetails[0].name}}</div>
+                                <div class="hidden sm:block">
+                                    <div class="flex justify-start gap-6 ">
+                                        <div
+                                            class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                            <!-- Left Calendar Icon -->
+                                            <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                            <!-- PrimeNG Calendar with Placeholder -->
+                                            <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate"
+                                                placeholder="Data de início" class="cursor-pointer" appendTo="body"
+                                                [readonlyInput]="true" (onSelect)="onStartDateSelect()"
+                                                [minDate]="minDate" [showIcon]="true"></p-calendar>
+
+                                            <!-- Right Arrow Icon -->
+                                            <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                                (click)="openCalendar(calendar)"></i>
+                                        </div>
+                                        <div
+                                            class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                            <!-- Left Calendar Icon -->
+                                            <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                            <!-- PrimeNG Calendar with Placeholder -->
+                                            <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate"
+                                                placeholder="Data de término" class="cursor-pointer" appendTo="body"
+                                                [readonlyInput]="true" [minDate]="allToursDetails[0].startDate"
+                                                [showIcon]="true"></p-calendar>
+
+                                            <!-- Right Arrow Icon -->
+                                            <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                                (click)="openCalendar(calendar)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- for mobile view -->
+                            <div class="flex justify-start gap-1 block sm:hidden">
+                                <div
+                                    class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                    <!-- Left Calendar Icon -->
+                                    <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                    <!-- PrimeNG Calendar with Placeholder -->
+                                    <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate"
+                                        placeholder="Data de início" class="cursor-pointer" appendTo="body"
+                                        [readonlyInput]="true" (onSelect)="onStartDateSelect()" [minDate]="minDate"
+                                        [showIcon]="true"></p-calendar>
+
+                                    <!-- Right Arrow Icon -->
+                                    <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                        (click)="openCalendar(calendar)"></i>
+                                </div>
+                                <div
+                                    class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                    <!-- Left Calendar Icon -->
+                                    <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                    <!-- PrimeNG Calendar with Placeholder -->
+                                    <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate"
+                                        placeholder="Data de término" class="cursor-pointer" appendTo="body"
+                                        [readonlyInput]="true" [minDate]="allToursDetails[0].startDate"
+                                        [showIcon]="true"></p-calendar>
+
+                                    <!-- Right Arrow Icon -->
+                                    <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                        (click)="openCalendar(calendar)"></i>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 justify-center items-center">
+                                <div>
+                                    <svg width="18" height="23" viewBox="0 0 18 23" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3 20.75C2.58579 20.75 2.25 21.0858 2.25 21.5C2.25 21.9142 2.58579 22.25 3 22.25V20.75ZM15 22.25C15.4142 22.25 15.75 21.9142 15.75 21.5C15.75 21.0858 15.4142 20.75 15 20.75V22.25ZM15.75 9C15.75 10.7065 14.6599 12.9136 13.1547 14.7468C12.4148 15.6481 11.6072 16.4179 10.8465 16.9554C10.0624 17.5094 9.42269 17.75 9 17.75V19.25C9.88982 19.25 10.8438 18.794 11.7121 18.1804C12.6038 17.5504 13.5071 16.6815 14.314 15.6987C15.9026 13.7638 17.25 11.2209 17.25 9H15.75ZM9 17.75C8.59247 17.75 7.95947 17.4993 7.171 16.9074C6.409 16.3353 5.59932 15.5178 4.85679 14.5668C3.34675 12.6327 2.25 10.325 2.25 8.61111H0.75C0.75 10.8246 2.09075 13.4614 3.67446 15.4899C4.4788 16.5201 5.38006 17.4385 6.27041 18.1069C7.13428 18.7555 8.09503 19.25 9 19.25V17.75ZM2.25 8.61111C2.25 4.98059 5.47857 2.25 9 2.25V0.75C4.78944 0.75 0.75 4.01941 0.75 8.61111H2.25ZM9 2.25C12.4938 2.25 15.75 4.95503 15.75 9H17.25C17.25 4.04497 13.2382 0.75 9 0.75V2.25ZM11.25 8.5C11.25 9.74264 10.2426 10.75 9 10.75V12.25C11.0711 12.25 12.75 10.5711 12.75 8.5H11.25ZM9 10.75C7.75736 10.75 6.75 9.74264 6.75 8.5H5.25C5.25 10.5711 6.92893 12.25 9 12.25V10.75ZM6.75 8.5C6.75 7.25736 7.75736 6.25 9 6.25V4.75C6.92893 4.75 5.25 6.42893 5.25 8.5H6.75ZM9 6.25C10.2426 6.25 11.25 7.25736 11.25 8.5H12.75C12.75 6.42893 11.0711 4.75 9 4.75V6.25ZM3 22.25H15V20.75H3V22.25Z"
+                                            fill="#869F44" />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="text-[#606060] text-lg sm:text-xl md:text-[28px] md:leading-[35px] font-normal">
+                                    {{allToursDetails[0].address}}
+                                </div>
+                                <div class="pr-4 sm:pr-8 md:pr-10 selected-spot block sm:hidden">
+                                    <svg [ngClass]="{ 'rotate': isRotated }" class="w-8 h-8 sm:w-12 sm:h-12"
+                                        (click)="toggleRotation()" width="54" height="54" viewBox="0 0 54 54"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M26.9998 52.8333C41.2676 52.8333 52.8332 41.2677 52.8332 27C52.8332 12.7322 41.2676 1.16666 26.9998 1.16666C12.7321 1.16666 1.1665 12.7322 1.1665 27C1.1665 41.2677 12.7321 52.8333 26.9998 52.8333Z"
+                                            fill="#869F44" stroke="white" stroke-width="2" stroke-linejoin="round" />
+                                        <path d="M38.625 23.125L27 34.75L15.375 23.125" stroke="white" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="allToursDetails.length>1"
+                            class="pr-4 sm:pr-8 md:pr-10 selected-spot hidden sm:block">
+                            <svg [ngClass]="{ 'rotate': isRotated }" class="w-8 h-8 sm:w-12 sm:h-12"
+                                (click)="toggleRotation()" width="54" height="54" viewBox="0 0 54 54" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M26.9998 52.8333C41.2676 52.8333 52.8332 41.2677 52.8332 27C52.8332 12.7322 41.2676 1.16666 26.9998 1.16666C12.7321 1.16666 1.1665 12.7322 1.1665 27C1.1665 41.2677 12.7321 52.8333 26.9998 52.8333Z"
+                                    fill="#869F44" stroke="white" stroke-width="2" stroke-linejoin="round" />
+                                <path d="M38.625 23.125L27 34.75L15.375 23.125" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class=" sm:px-8 md:px-12" *ngIf="isRotated">
+                <ng-container *ngFor="let activity of allToursDetails;let i=index;">
+
+                    <div class="h-full border rounded-3xl mb-6" *ngIf="i>0">
+                        <div class="flex flex-col gap-2 p-4">
+                            <div class="pb-4">
+                                <div class="flex flex-col sm:flex-row items-start gap-4 justify-between">
+                                    <div class="flex justify-center items-center gap-2">
+                                        <div class="image overflow-hidden">
+                                            <img class="w-12 h-12 rounded-full" src="{{activity.image}}" alt="image">
+                                        </div>
+                                        <div class="text-lg sm:text-xl md:text-[24px] text-[#344054]">{{activity.name}}
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="flex flex-row gap-4 justify-center items-center">
+                                        <div
+                                            class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                            <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                            <p-calendar #calendar [(ngModel)]="activity.date" placeholder="Select Date"
+                                                class="cursor-pointer" appendTo="body" [readonlyInput]="true"
+                                                [minDate]="allToursDetails[0].startDate"
+                                                [maxDate]="allToursDetails[0].endDate" [showIcon]="true"></p-calendar>
+
+                                            <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                                (click)="openCalendar(calendar)"></i>
+                                        </div>
+                                        <div
+                                            class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                            <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                            <p-calendar #timePicker [(ngModel)]="activity.time"
+                                                (onSelect)="addTime($event,i)" [showTime]="true" hourFormat="12"
+                                                [timeOnly]="true" placeholder="Select Time" appendTo="body"
+                                                [minDate]="getMinTime(activity.date)" [readonlyInput]="true"
+                                                class=""></p-calendar>
+
+                                            <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                                (click)="selectTime(timePicker)"></i>
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                            </div>
+                            <div class="text-sm sm:text-lg md:text-[18px] text-primary mb-3">{{activity.spot_id.name}}
+                            </div>
+                            <div
+                                class="text-sm sm:text-base md:text-lg leading-4 sm:leading-5 md:leading-8 font-normal text-[#666666]">
+                                {{activity.description}}
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </div>
+            <div class="checkout flex flex-col justify-center items-center py-6">
+                <p-button (onClick)="checkoutStatus.userDetailsStatus = true"
+                    [disabled]="!allToursDetails[0].startDate || !allToursDetails[0].endDate" label="Continuar"
+                    styleClass="min-w-[300px] py-1 sm:py-4 px-10 flex justify-center"></p-button>
+                <div *ngIf="timeWarningStatus" class="text-sm md:text-lg font-medium text-red-400">Time is also same for
+                    another activity !</div>
+            </div>
+        </div>
+        <!-- personal info  -->
+        <div class="personal-info my-6" *ngIf="checkoutStatus.userDetailsStatus">
+            <div class="relative border rounded-[30px] p-6" style="box-shadow: 0px 7px 20px 0px #0000001A;">
+                <div class="title text-lg sm:text-xl md:text-[20px] md:leading-[32px] font-medium">
+                    Insira seus dados
+                </div>
+                <div class="form py-6">
+                    <form [formGroup]="userForm" class=" h-full flex flex-col justify-center">
+                        <div class=" flex flex-col md:flex-row justify-between gap-0 md:gap-8">
+                            <!-- First Name -->
+                            <div class="mb-4 w-full">
+                                <label for="firstName" class="block text-base font-medium text-gray-700 mb-1">Primeiro 
+                                  nome</label>
+                                <span class="p-input-icon-left w-full">
+                                    <i>
+                                        <svg width="17" height="22" viewBox="0 0 17 22" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8.57878 11.056C11.2176 11.056 13.3568 8.91682 13.3568 6.278C13.3568 3.63918 11.2176 1.5 8.57878 1.5C5.93996 1.5 3.80078 3.63918 3.80078 6.278C3.80078 8.91682 5.93996 11.056 8.57878 11.056Z"
+                                                stroke="#CACACA" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M1.00002 17.7016C0.998748 17.3657 1.07387 17.0339 1.21971 16.7313C1.67738 15.816 2.968 15.3308 4.03893 15.1112C4.81129 14.9463 5.59432 14.8362 6.38218 14.7816C7.84085 14.6535 9.30795 14.6535 10.7666 14.7816C11.5544 14.8369 12.3374 14.947 13.1099 15.1112C14.1808 15.3308 15.4714 15.7702 15.9291 16.7313C16.2224 17.3481 16.2224 18.0642 15.9291 18.681C15.4714 19.6421 14.1808 20.0814 13.1099 20.2919C12.3384 20.4636 11.5551 20.5768 10.7666 20.6306C9.57938 20.7313 8.3866 20.7496 7.19683 20.6855C6.92223 20.6855 6.65678 20.6855 6.38218 20.6306C5.59665 20.5775 4.81633 20.4642 4.04809 20.2919C2.968 20.0814 1.68653 19.6421 1.21971 18.681C1.07461 18.3749 0.999568 18.0403 1.00002 17.7016Z"
+                                                stroke="#CACACA" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </i>
+                                    <input id="firstName" type="text" pInputText formControlName="user_name"
+                                        placeholder="Digite o primeiro nome"
+                                        class="w-full px-4 py-3 border border-[#D0D5DD] rounded-md placeholder:text-base  placeholder-light text-base  focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"
+                                        (keypress)="allowLettersOnly($event)" />
+                                </span>
+                                <div *ngIf="userForm.get('user_name')?.invalid && userForm.get('user_name')?.touched"
+                                    class="text-red-500 text-sm mt-1">O primeiro nome é obrigatório</div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-4 w-full">
+                                <label for="email" class="block text-base font-medium text-gray-700 mb-1">E-mail</label>
+                                <span class="p-input-icon-left w-full">
+                                    <i>
+                                        <svg width="21" height="19" viewBox="0 0 21 19" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.2676 6.56104L12.0022 9.99531C11.1949 10.6282 10.0634 10.6282 9.25616 9.99531L4.9541 6.56104"
+                                                stroke="#CACACA" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M5.88787 1L15.3158 1C16.6752 1.01525 17.969 1.58993 18.896 2.5902C19.823 3.59048 20.3022 4.92903 20.222 6.29412L20.222 12.822C20.3022 14.1871 19.823 15.5256 18.896 16.5259C17.969 17.5262 16.6752 18.1009 15.3158 18.1161L5.88787 18.1161C2.96796 18.1161 1 15.7407 1 12.822L1 6.29412C1 3.37545 2.96796 1 5.88787 1Z"
+                                                stroke="#CACACA" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </i>
+                                    <input id="email" type="email" pInputText formControlName="user_email"
+                                        placeholder="Digite o e-mail"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+
+                                </span>
+                                <div *ngIf="userForm.get('user_email')?.invalid && userForm.get('user_email')?.touched"
+                                    class="text-red-500 text-sm mt-1">É necessário um e-mail válido</div>
+                            </div>
+                        </div>
+
+
+                        <div class=" flex flex-col md:flex-row justify-between gap-0 md:gap-8">
+                            <div class="mb-4 w-full">
+                                <div class="w-full">
+                                    <label for="phone" class="block text-base font-medium text-gray-700 mb-1">Telefone
+                                        Número</label>
+                                    <div class="flex items-center space-x-2">
+                                        <p-dropdown [options]="countries" formControlName="country_code"
+                                            optionLabel="dial_code" optionValue="dial_code" class="w-1/6">
+                                            <ng-template let-country pTemplate="selectedItem" class="p-[5px]">
+                                                <div class="flex items-center">
+                                                    <span>{{ country.dial_code }}</span>
+                                                    <!-- <span class="ml-2">{{ country.name }}</span> -->
+                                                </div>
+                                            </ng-template>
+                                            <ng-template let-country pTemplate="item">
+                                                <div class="flex items-center">
+                                                    <span>{{ country.flag }}</span>
+                                                    <span class="ml-2">{{ country.name }}
+                                                        ({{ country.dial_code }})</span>
+                                                </div>
+                                            </ng-template>
+                                        </p-dropdown>
+                                        <span class="p-input-icon-left w-full">
+                                            <i class="pi pi-phone" style="font-size: 1.2rem; color: #cacaca;"></i>
+                                            <input id="phoneNumber" type="text" pInputText formControlName="user_mobile"
+                                                (input)="formatPhoneNumber()" placeholder="Digite o número de telefone"
+                                                class="w-full px-4 py-2 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                        </span>
+                                    </div>
+                                    <div *ngIf="userForm.get('user_mobile')?.invalid && userForm.get('user_mobile')?.touched"
+                                        class="text-red-500 text-sm mt-1">É necessário um número válido</div>
+                                </div>
+                                <div class="block md:hidden">
+                                    <label for="message"
+                                        class="block text-base font-medium text-gray-700 mb-1 mt-4">Insira o endereço do local de retirada
+                                    </label>
+                                    <span class="p-input-icon-left message w-full">
+                                        <i>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M11.9999 3.2002C7.14468 3.2002 3.19988 7.145 3.19988 12.0002C3.19988 13.4202 3.56308 14.8106 4.21988 16.0674L3.21068 20.3074C3.19477 20.3739 3.19618 20.4434 3.21479 20.5093C3.2334 20.5751 3.26859 20.6351 3.31698 20.6834C3.36538 20.7318 3.42536 20.7669 3.49121 20.7855C3.55705 20.804 3.62656 20.8054 3.69308 20.7894L7.93308 19.7802C9.18948 20.437 10.5799 20.8002 11.9999 20.8002C16.8547 20.8002 20.7999 16.8558 20.7999 12.0002C20.7999 7.1446 16.8555 3.2002 11.9999 3.2002ZM11.9999 4.0002C16.4231 4.0002 19.9999 7.5774 19.9999 12.0002C19.9999 16.423 16.4227 20.0002 11.9999 20.0002C10.6539 20.0002 9.32908 19.6602 8.14908 19.0122C8.06207 18.9645 7.96042 18.9508 7.86388 18.9738L4.13988 19.8602L5.02628 16.1362C5.04943 16.0397 5.03588 15.9381 4.98828 15.851C4.3401 14.671 4.00014 13.3465 3.99988 12.0002C3.99988 7.577 7.57708 4.0002 11.9999 4.0002Z"
+                                                    fill="#CACACA" stroke="#CACACA" stroke-width="0.5" />
+                                                <path
+                                                    d="M7.9998 10.7998C7.3418 10.7998 6.7998 11.3418 6.7998 11.9998C6.7998 12.6578 7.3418 13.1998 7.9998 13.1998C8.6578 13.1998 9.1998 12.6578 9.1998 11.9998C9.1998 11.3418 8.6578 10.7998 7.9998 10.7998ZM7.9998 11.5998C8.2254 11.5998 8.3998 11.7742 8.3998 11.9998C8.3998 12.2254 8.2254 12.3998 7.9998 12.3998C7.7742 12.3998 7.5998 12.2254 7.5998 11.9998C7.5998 11.7742 7.7742 11.5998 7.9998 11.5998ZM11.9998 10.7998C11.3418 10.7998 10.7998 11.3418 10.7998 11.9998C10.7998 12.6578 11.3418 13.1998 11.9998 13.1998C12.6578 13.1998 13.1998 12.6578 13.1998 11.9998C13.1998 11.3418 12.6578 10.7998 11.9998 10.7998ZM11.9998 11.5998C12.2254 11.5998 12.3998 11.7742 12.3998 11.9998C12.3998 12.2254 12.2254 12.3998 11.9998 12.3998C11.7742 12.3998 11.5998 12.2254 11.5998 11.9998C11.5998 11.7742 11.7742 11.5998 11.9998 11.5998ZM15.9998 10.7998C15.3418 10.7998 14.7998 11.3418 14.7998 11.9998C14.7998 12.6578 15.3418 13.1998 15.9998 13.1998C16.6578 13.1998 17.1998 12.6578 17.1998 11.9998C17.1998 11.3418 16.6578 10.7998 15.9998 10.7998ZM15.9998 11.5998C16.2254 11.5998 16.3998 11.7742 16.3998 11.9998C16.3998 12.2254 16.2254 12.3998 15.9998 12.3998C15.7742 12.3998 15.5998 12.2254 15.5998 11.9998C15.5998 11.7742 15.7742 11.5998 15.9998 11.5998Z"
+                                                    fill="#CACACA" stroke="#CACACA" stroke-width="0.5" />
+                                            </svg>
+                                        </i>
+                                        <textarea id="message" pInputTextarea rows="4" formControlName="user_address"
+                                            placeholder="Insira o endereço"
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"></textarea>
+                                    </span>
+                                    <div *ngIf="userForm.get('user_address')?.invalid && userForm.get('user_address')?.touched"
+                                        class="text-red-500 text-sm mt-1">O endereço é obrigatório</div>
+                                </div>
+                                <div>
+                                    <div
+                                        class="title mt-4 text-lg sm:text-xl md:text-[20px] md:leading-[32px] font-medium">
+                                        Selecione o número de pessoas</div>
+                                    <div>
+                                        <div class="border border-gray-300 rounded-md px-3 py-1 mb-4">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <div class="text-lg font-light">Adulta <span
+                                                            class="text-[#606060]">(acima 18 anos)</span></div>
+                                                    <div class="text-primary text-lg font-semibold">
+                                                        ${{ priceDetails.adult.totalPrice }}
+                                                    </div>
+                                                </div>
+                                                <div class="count-btn flex items-center gap-2 ">
+                                                    <div
+                                                        class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus" (onClick)="decrement('adult')"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                        <span>{{ priceDetails.adult.count }}</span>
+                                                        <p-button icon="pi pi-plus" (onClick)="increment('adult')"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border border-gray-300 rounded-md px-3 py-1 mb-4">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <div class="text-lg font-light">Criança <span
+                                                            class="text-[#606060]">(6-17 anos)</span></div>
+                                                    <div class="text-primary text-lg font-semibold">
+                                                        ${{ priceDetails.child.totalPrice }}
+                                                    </div>
+                                                </div>
+                                                <div class="count-btn flex items-center gap-2 ">
+                                                    <div
+                                                        class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus" (click)="decrement('child')"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                        <span>{{ priceDetails.child.count }}</span>
+                                                        <p-button icon="pi pi-plus" (click)="increment('child')"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border border-b border-gray-300 rounded-md px-3 py-1 mb-4">
+                                            <div class="flex justify-between ">
+                                                <div>
+                                                    <div class="text-lg font-light">Infantil<span class="text-[#606060]">
+                                                            (0-5 anos)</span></div>
+                                                    <div class="text-primary text-lg font-semibold">
+                                                        ${{ priceDetails.infant.totalPrice }}
+                                                    </div>
+                                                </div>
+                                                <div class="count-btn flex items-center gap-2 ">
+                                                    <div
+                                                        class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus" (click)="decrement('infant')"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                        <span>{{ priceDetails.infant.count }}</span>
+                                                        <p-button icon="pi pi-plus" (click)="increment('infant')"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between pt-4">
+                                            <div class="text-primary text-[24px] leading-8 font-semibold">
+                                                ${{ getTotalPrice() }}
+                                            </div>
+                                            <div class="text-[#333333] text-[24px] leading-8 font-normal">Preço Total
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 w-full">
+                                <div class="hidden md:block">
+                                    <label for="message" class="block text-base font-medium text-gray-700 mb-1">Insira
+o endereço do seu local de retirada</label>
+                                    <span class="p-input-icon-left message w-full">
+                                        <i>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M11.9999 3.2002C7.14468 3.2002 3.19988 7.145 3.19988 12.0002C3.19988 13.4202 3.56308 14.8106 4.21988 16.0674L3.21068 20.3074C3.19477 20.3739 3.19618 20.4434 3.21479 20.5093C3.2334 20.5751 3.26859 20.6351 3.31698 20.6834C3.36538 20.7318 3.42536 20.7669 3.49121 20.7855C3.55705 20.804 3.62656 20.8054 3.69308 20.7894L7.93308 19.7802C9.18948 20.437 10.5799 20.8002 11.9999 20.8002C16.8547 20.8002 20.7999 16.8558 20.7999 12.0002C20.7999 7.1446 16.8555 3.2002 11.9999 3.2002ZM11.9999 4.0002C16.4231 4.0002 19.9999 7.5774 19.9999 12.0002C19.9999 16.423 16.4227 20.0002 11.9999 20.0002C10.6539 20.0002 9.32908 19.6602 8.14908 19.0122C8.06207 18.9645 7.96042 18.9508 7.86388 18.9738L4.13988 19.8602L5.02628 16.1362C5.04943 16.0397 5.03588 15.9381 4.98828 15.851C4.3401 14.671 4.00014 13.3465 3.99988 12.0002C3.99988 7.577 7.57708 4.0002 11.9999 4.0002Z"
+                                                    fill="#CACACA" stroke="#CACACA" stroke-width="0.5" />
+                                                <path
+                                                    d="M7.9998 10.7998C7.3418 10.7998 6.7998 11.3418 6.7998 11.9998C6.7998 12.6578 7.3418 13.1998 7.9998 13.1998C8.6578 13.1998 9.1998 12.6578 9.1998 11.9998C9.1998 11.3418 8.6578 10.7998 7.9998 10.7998ZM7.9998 11.5998C8.2254 11.5998 8.3998 11.7742 8.3998 11.9998C8.3998 12.2254 8.2254 12.3998 7.9998 12.3998C7.7742 12.3998 7.5998 12.2254 7.5998 11.9998C7.5998 11.7742 7.7742 11.5998 7.9998 11.5998ZM11.9998 10.7998C11.3418 10.7998 10.7998 11.3418 10.7998 11.9998C10.7998 12.6578 11.3418 13.1998 11.9998 13.1998C12.6578 13.1998 13.1998 12.6578 13.1998 11.9998C13.1998 11.3418 12.6578 10.7998 11.9998 10.7998ZM11.9998 11.5998C12.2254 11.5998 12.3998 11.7742 12.3998 11.9998C12.3998 12.2254 12.2254 12.3998 11.9998 12.3998C11.7742 12.3998 11.5998 12.2254 11.5998 11.9998C11.5998 11.7742 11.7742 11.5998 11.9998 11.5998ZM15.9998 10.7998C15.3418 10.7998 14.7998 11.3418 14.7998 11.9998C14.7998 12.6578 15.3418 13.1998 15.9998 13.1998C16.6578 13.1998 17.1998 12.6578 17.1998 11.9998C17.1998 11.3418 16.6578 10.7998 15.9998 10.7998ZM15.9998 11.5998C16.2254 11.5998 16.3998 11.7742 16.3998 11.9998C16.3998 12.2254 16.2254 12.3998 15.9998 12.3998C15.7742 12.3998 15.5998 12.2254 15.5998 11.9998C15.5998 11.7742 15.7742 11.5998 15.9998 11.5998Z"
+                                                    fill="#CACACA" stroke="#CACACA" stroke-width="0.5" />
+                                            </svg>
+                                        </i>
+                                        <textarea id="message" pInputTextarea rows="4" formControlName="user_address"
+                                            placeholder="Insira o endereço"
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"></textarea>
+                                    </span>
+                                    <div *ngIf="userForm.get('user_address')?.invalid && userForm.get('user_address')?.touched"
+                                        class="text-red-500 text-sm mt-1">O endereço é obrigatório</div>
+                                </div>
+
+                                <div class="button flex flex-col justify-center items-center mt-4 gap-4 w-full">
+                                    <p-button label="Pague Agora"
+                                        [disabled]="(userForm.invalid || paymentLoading) && (payNowStatus || userForm.invalid) || (priceDetails.adult.count==0 && priceDetails.child.count==0 && priceDetails.infant.count==0)"
+                                        (onClick)="onPayment()"
+                                        styleClass="px-10 py-2 sm:py-4 p-button-outlined  p-button-raised text-nowrap min-w-[300px]">
+                                        <div class="flex justify-center items-center "
+                                            *ngIf="paymentLoading && payNowStatus">
+                                            <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+                                        </div>
+                                    </p-button>
+
+                                    <p-button label="Pague na Retirada"
+                                        [disabled]="(userForm.invalid || paymentLoading) && (payLaterStatus || userForm.invalid) || (priceDetails.adult.count==0 && priceDetails.child.count==0 && priceDetails.infant.count==0)"
+                                        (onClick)="onLaterPayment()"
+                                        styleClass="px-10 py-2 sm:py-4 text-nowrap min-w-[300px]">
+                                        <div class="flex justify-center items-center "
+                                            *ngIf="paymentLoading && payLaterStatus">
+                                            <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+                                        </div>
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <p-toast></p-toast>
+                <!-- Popup Overlay -->
+                <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full"
+                    *ngIf="visible && paymentLatterSuccess">
+                </div>
+
+                <div class="absolute confirm-message bg-white z-10 top-1/4  message-container  w-[300px] h-[350px] sm:w-[400px] sm:h-[400px] rounded-[30px]"
+                    *ngIf="visible && paymentLatterSuccess">
+                    <div class="p-4 flex flex-col justify-center items-center w-full h-full">
+                        <div class="flex justify-center py-10">
+                            <svg width="61" height="61" viewBox="0 0 61 61" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_1061_1887)">
+                                    <path
+                                        d="M50.384 32.0373C49.6442 31.2975 49.6442 30.0983 50.384 29.3585L54.4016 25.3409C55.1414 24.6011 56.3406 24.6011 57.08 25.3409C57.8198 26.0807 57.8198 27.2799 57.08 28.0193L53.0624 32.0373C52.3226 32.7771 51.1233 32.7771 50.384 32.0373Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M52.3924 39.4031C51.6531 38.6637 51.6531 37.4645 52.3924 36.7247L56.4105 32.7071C57.1498 31.9673 58.3495 31.9673 59.0889 32.7071C59.8287 33.4464 59.8287 34.6457 59.0889 35.3855L55.0713 39.4031C54.3315 40.1429 53.1322 40.1429 52.3924 39.4031Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M28.9552 10.6082C29.6951 11.348 30.8943 11.348 31.6341 10.6082L35.6517 6.59055C36.3915 5.85075 36.3915 4.6515 35.6517 3.91215C34.9119 3.17235 33.7126 3.17235 32.9733 3.91215L28.9552 7.92975C28.2154 8.66956 28.2154 9.86881 28.9552 10.6082Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M21.589 8.59982C22.3284 9.33917 23.5276 9.33917 24.2674 8.59982L28.285 4.58176C29.0248 3.84242 29.0248 2.64271 28.285 1.90336C27.5457 1.16356 26.3464 1.16356 25.6066 1.90336L21.589 5.92096C20.8492 6.66077 20.8492 7.86002 21.589 8.59982Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M60.6664 46.4989L51.2915 15.0261C51.1994 14.7172 50.9564 14.4759 50.6465 14.3866C50.3372 14.2973 50.0029 14.3714 49.7603 14.5837L39.0463 23.9585C38.6766 24.2822 38.6154 24.8346 38.9054 25.2305L56.7344 49.5888C57.0723 50.0501 57.7638 50.1035 58.1684 49.6989L60.4283 47.4389C60.6742 47.1931 60.7658 46.8322 60.6664 46.4989Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M46.6063 10.3463C46.5166 10.0365 46.2758 9.79341 45.9669 9.70134L14.4941 0.326479C14.1608 0.22704 13.7998 0.318653 13.554 0.564488L11.2941 2.82442C10.8894 3.22908 10.9428 3.92054 11.4041 4.25799L35.7624 22.087C35.93 22.2104 36.1266 22.2697 36.3213 22.2697C36.5856 22.2697 36.848 22.1593 37.0344 21.9466L46.4093 11.2325C46.6215 10.9899 46.6956 10.6557 46.6063 10.3463Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M27.8313 47.0985L24.4831 38.393C24.368 38.0938 24.1092 37.8733 23.7957 37.8065C23.4822 37.7402 23.1563 37.8369 22.9293 38.0634L17.5725 43.4207C17.2024 43.7903 17.2024 44.3897 17.5725 44.7599L23.5992 50.7865C23.9638 51.1511 24.5733 51.1511 24.9384 50.7865L27.6168 48.1081C27.8815 47.8434 27.9652 47.4475 27.8313 47.0985Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M22.9291 38.0633C23.1556 37.8368 23.2522 37.5108 23.1859 37.1968C23.1192 36.8833 22.8987 36.6246 22.5994 36.51L13.8939 33.1618C13.545 33.0273 13.1495 33.1111 12.8848 33.3758L10.206 36.0542C9.83629 36.4244 9.83629 37.0238 10.206 37.3934L16.2331 43.4205C16.4177 43.6051 16.6603 43.6977 16.9024 43.6977C17.145 43.6977 17.3872 43.6051 17.5723 43.4205L22.9291 38.0633Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M59.7595 1.23367C58.7711 0.245273 56.8352 -0.54149 53.2246 1.32345C51.1028 2.42003 48.667 4.29049 46.3666 6.59093C34.4192 18.5383 15.6897 41.2513 15.5019 41.4796C15.1921 41.8558 15.2188 42.4064 15.5636 42.7512L18.242 45.4296C18.4261 45.6137 18.6683 45.7072 18.9118 45.7072C19.1245 45.7072 19.3381 45.6358 19.5135 45.4908C19.7414 45.3034 42.4548 26.574 54.4022 14.6266C56.7027 12.3262 58.5731 9.89036 59.6697 7.76809C61.5346 4.15837 60.7479 2.22208 59.7595 1.23367Z"
+                                        fill="#7BC5DD" />
+                                    <path
+                                        d="M59.759 1.23372C59.4749 0.949678 59.1121 0.683127 58.6545 0.490234C59.1319 1.62549 59.1503 3.34772 57.8213 5.92069C56.7252 8.04251 54.8542 10.4783 52.5538 12.7787C40.6064 24.7261 17.8934 43.4556 17.6651 43.6434C17.4897 43.788 17.2761 43.8593 17.0634 43.8593C16.8203 43.8593 16.5777 43.7659 16.3936 43.5822L18.2415 45.4296C18.4256 45.6138 18.6678 45.7072 18.9113 45.7072C19.124 45.7072 19.3376 45.6359 19.513 45.4913C19.7409 45.3035 42.4543 26.574 54.4017 14.6266C56.7021 12.3262 58.5726 9.89087 59.6692 7.76859C61.5341 4.15842 60.7474 2.22212 59.759 1.23372Z"
+                                        fill="#50B2D2" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_1061_1887">
+                                        <rect width="60.3409" height="60.3409" fill="white"
+                                            transform="translate(0.46582 0.193237)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div
+                            class="title text-center text-lg sm:text-xl md:text-[34px] md:leading-9 font-medium text-primary">
+                            Prepare-se para voar.
+                        </div>
+                        <div
+                            class="subtitle mb-3 text-center text-lg md:text-[22px] md:leading-8 font-normal text-[#0E3D4D]">
+                            Aproveite a viagem para as Filipinas!
+                        </div>
+                        <div class="text-[#525252] font-light text-base md:text-lg text-center">
+                            A confirmação do pedido foi enviada para {{userForm.get('user_email')?.value}}
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <p-button label="De volta para casa" class="px-4 sm:px-10" routerLink="/"
+                                styleClass="px-4 sm:px-10 py-1 sm:py-3 text-nowrap min-w-[300px]"></p-button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

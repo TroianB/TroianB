@@ -1,0 +1,70 @@
+<div class="container-1 w-full h-fit pt-10">
+    <div class="header px-4 sm:px-8 md:px-12 pb-4 pt-12 sm:pt-16">
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">Home <span
+                class="text-primary">> Blogs</span>
+        </div>
+        <div class="flex justify-between items-center">
+            <div
+                class="heading border-b sm:pb-6 text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium">
+                Blogs que você deve consultar junto com viagens</div>
+
+        </div>
+    </div>
+
+    <div class="flex min-h-[500px] justify-center items-center " *ngIf="!blogs.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+    </div>
+    <div class="details px-4 sm:px-8 md:px-12 mb-12" *ngIf="blogs.length">
+        <div class="blogs-details">
+            <div class="blogs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 ">
+                <ng-container *ngFor="let blog of blogs | paginate: { id: 'foo',
+                itemsPerPage: itemsPerpage,
+                currentPage: currentPage,
+                totalItems: totalItems }">
+                    <div class="blog border bg-white flex flex-col justify-between rounded-xl p-2 md:p-4 cursor-pointer"
+                        [routerLink]="['/blogs/blog',blog._id]">
+                        <div class="image mb-4 relative overflow-hidden group rounded-lg">
+                            <img src="{{blog.images[0]}}" alt="image" class="w-full h-[250px] object-cover rounded-lg  transition-transform duration-1000 group-hover:scale-110">
+                            <div class="share absolute right-[5%] top-[5%]">
+                                <div class="bg-white rounded-2xl px-3 py-1 flex items-center text-primary cursor-pointer"
+                                    (click)="shareLink(blog._id)">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.6667 4.1665V7.49984C5.83333 8.33317 3.33333 12.4998 2.5 16.6665C4.58333 13.7498 7.5 12.4165 11.6667 12.4165V15.8332L17.5 9.99984L11.6667 4.1665ZM13.3333 8.1915L15.1417 9.99984L13.3333 11.8082V10.7498H11.6667C9.94167 10.7498 8.39167 11.0665 6.95 11.5415C8.11667 10.3832 9.61667 9.47484 11.9 9.1665L13.3333 8.9415V8.1915Z"
+                                            fill="#869F44" />
+                                    </svg>
+                                    Share
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-2 text-base font-semibold  text-primary">
+                            <span class="bg-[#D6E8A733] p-2 rounded-lg">Travel</span>
+                        </div>
+                        <div class="sbuTitle mb-4 text-base sm:text-lg md:text-xl font-semibold text-[#475467]">
+                            {{blog.title}}
+                        </div>
+                        <div class="button">
+                            <p-button label="Leia mais" icon="pi pi-arrow-right" iconPos="right"
+                                styleClass="px-8 py-2 p-button-outlined  p-button-raised text-nowrap"></p-button>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </div>
+            <div class="pegination flex justify-center pt-6">
+                <!-- <div class="flex gap-4">
+                    <span class="text-primary text-lg md:text-xl font-medium">1</span>
+                    <span class="text-[#606060] text-lg md:text-xl font-medium">2</span>
+                    <span class="text-[#606060] text-lg md:text-xl font-medium">3</span>
+                    <span class="text-[#606060] text-lg md:text-xl font-medium">></span>
+                </div> -->
+                <pagination-controls class="my-pagination" id="foo" (pageChange)="pageChanged($event)"
+                    (pageBoundsCorrection)="pageChanged($event)" [maxSize]="3" [directionLinks]="true"
+                    [responsive]="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
+                    screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

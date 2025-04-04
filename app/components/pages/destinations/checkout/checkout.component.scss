@@ -1,0 +1,49 @@
+.details {
+    .selected-spot {
+        svg {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+    }
+
+    .placeholder-light::placeholder {
+        font-weight: 400;
+    }
+
+    /* Popup Overlay for blur */
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        z-index: 10;
+    }
+}
+
+.date-picker {
+    @media(max-width:400px) {
+        left: 2px;
+    }
+}
+
+.confirm-message {
+    left: calc(50% - 200px);
+
+    @media(max-width:768px) {
+        left: calc(50% - 150px);
+    }
+}
+.pi {
+    line-height: unset;
+}
+
+.pi-spin {
+    animation: fa-spin 1s infinite linear;
+}

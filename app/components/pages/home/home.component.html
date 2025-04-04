@@ -1,0 +1,1093 @@
+<div class="flex h-screen justify-center items-center " *ngIf="!bannerDetails.length">
+    <i class="pi pi-spin pi-spinner alimate-spin text-[#3A5C41]" style="font-size: 2rem"></i>
+</div>
+<div class="w-full h-[450px] sm:h-fit container-1" *ngIf="bannerDetails.length">
+    <p-carousel [value]="bannerDetails" [autoplayInterval]="3000" [numVisible]="1" [numScroll]="1" [circular]="true"
+        class="h-full" styleClass="h-full">
+        <ng-template pTemplate="item" let-banner let-i="index" class="h-full" styleClass="h-full">
+            <div class="relative h-full">
+                <div class="max-h-screen h-full overflow-hidden">
+                    <img [src]="banner.image" alt="banner" class="w-full max-h-[75vh] h-full object-cover" />
+                </div>
+                <div class="absolute top-[18%] sm:top-[30%] md:top-[25%] lg:top-[20%] px-4 sm:px-8 md:px-12">
+                    <div class="text-[16px] sm:text-[20px] leading-8 font-normal tracking-[2%] text-white">
+                        {{banner.subtitle}}
+                    </div>
+                    <div
+                        class="mt-2 w-2/3 sm:w-1/2 text-xl sm:text-[30px] md:text-[35px] lg:text-[50px] leading-normal font-semibold text-white">
+                        {{banner.title}}
+                    </div>
+                </div>
+                <div
+                    class="absolute bottom-[20%] md:bottom-[20%] right-[45%] sm:right-[30%] md:right-[25%] lg:right-[20%]">
+                    <div class="location-point relative ">
+                        <div
+                            class="point w-6 h-6 border-4 sm:border-[5px] rounded-full border-white] flex justify-center items-center">
+                            <div
+                                class="w-4 h-4 border-4 rounded-full border-[#869F44] flex justify-center items-center">
+                                <div class=" w-2 h-2 border-4 rounded-full border-[#9BFF1C] ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wave absolute inset-0 rounded-full bg-[#9BFF1C] opacity-50"></div>
+
+                        <div class="">
+                            <svg class="absolute top-[27%] left-[26%]" width="87" height="32" viewBox="0 0 87 32"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.676432 5.60791C0.676432 8.55343 3.06425 10.9412 6.00977 10.9412C8.95528 10.9412 11.3431 8.55343 11.3431 5.60791C11.3431 2.66239 8.95528 0.274577 6.00977 0.274577C3.06425 0.274577 0.676432 2.66239 0.676432 5.60791ZM31.8708 30.6079L31.1758 31.3269L31.4665 31.6079H31.8708V30.6079ZM86.0098 31.6079C86.562 31.6079 87.0098 31.1602 87.0098 30.6079C87.0098 30.0556 86.562 29.6079 86.0098 29.6079V31.6079ZM5.31473 6.32688L31.1758 31.3269L32.5658 29.8889L6.7048 4.88894L5.31473 6.32688ZM31.8708 31.6079H86.0098V29.6079H31.8708V31.6079Z"
+                                    fill="#9BFF1C" />
+                            </svg>
+
+                        </div>
+                        <div class="absolute text-lg sm:text-[20px] -right-36 font-normal text-white leanding-8">
+                            {{banner.name}}
+                        </div>
+                        <div class="absolute w-[160px] sm:w-[170px] bg-white border left-4 -bottom-12 sm:-bottom-10">
+
+                        </div>
+                        <div class="absolute text-white text-xl -bottom-20 sm:-bottom-20 -right-24">
+                            <span>{{ banner.index }}</span>
+                            <span>/</span>
+                            <span>{{bannerDetails.length}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>
+<div class="w-full h-fit bg-[#F7FFED] container-2 pb-4">
+    <div class="header px-4 sm:px-8 md:px-12 py-8">
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">O que você pode fazer?</div>
+        <div class="flex justify-between items-center">
+            <div class="heading text-lg sm:text-[30px] leading-6 sm:leading-12 font-semibold">Atividades <span
+                    class="text-primary"> NÃO </span>são menos que aventuras!</div>
+            <!-- <div class="view-all flex items-center text-sm sm:text-lg leading-8 font-normal cursor-pointer whitespace-nowrap">View
+                All
+                <svg class="ml-1 w-10 h-12 sm:h-16 sm:w-16 "   viewBox="0 0 64 64" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d_359_1932)">
+                        <rect x="16" y="13.5" width="32" height="32" rx="16" fill="white"
+                            shape-rendering="crispEdges" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M41.1653 30.2444C41.5764 29.8333 41.5764 29.1668 41.1653 28.7558L35.5513 23.1417C35.1402 22.7306 34.4737 22.7306 34.0626 23.1417C33.6516 23.5528 33.6516 24.2193 34.0626 24.6304L37.8797 28.4474L23.5789 28.4474C22.9975 28.4475 22.5263 28.9187 22.5263 29.5001C22.5263 30.0814 22.9975 30.5527 23.5789 30.5527L37.8797 30.5527L34.0626 34.3698C33.6516 34.7809 33.6516 35.4474 34.0626 35.8584C34.4737 36.2695 35.1402 36.2695 35.5513 35.8584L41.1653 30.2444Z"
+                            fill="#0E3D4D" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_d_359_1932" x="0.470588" y="0.794117" width="63.0588" height="63.0588"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="2.82353" />
+                            <feGaussianBlur stdDeviation="7.76471" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_359_1932" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_359_1932"
+                                result="shape" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div> -->
+        </div>
+    </div>
+    <div class="flex h-96 justify-center items-center " *ngIf="!allActivities.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+    </div>
+    <div class="card-details h-[250px]  sm:h-auto" *ngIf="allActivities.length">
+        <p-carousel [value]="allActivities" [numVisible]="4" [numScroll]="1" [circular]="false"
+            [responsiveOptions]="responsiveOptions" class="h-full" styleClass="h-full">
+            <ng-template let-card pTemplate="item">
+                <div class="relative h-full overflow-hidden group">
+                    <div class=" overflow-hidden h-full rounded-[30px] w-[93%]">
+                        <img src="{{card.image}}" alt="banner"
+                            class="rounded-[30px] activity-image object-cover h-full w-full max-w-[360px] transition-transform duration-1000 group-hover:scale-110" />
+                    </div>
+                    <div class="flex flex-col  w-full absolute bottom-[10%] pr-6 overflow-hidden">
+                        <div class="  flex flex-col mb-6 px-3">
+                            <div class="text-[20px] leading-8 font-semibold tracking-[2%] text-white">
+                                {{card.name}}
+                            </div>
+                            <div></div>
+                            <div class="text-base leading-5 font-normal tracking-[2%] text-white">
+                                {{ card.description | slice:0:80 }}{{ card.description.length > 80 ? '...' : '' }}
+                            </div>
+                        </div>
+                        <div class="button w-full mx-auto flex items-center justify-center">
+
+                            <p-button [routerLink]="['/tours/tour-details',card.spot_id.tour_id]" label="Leia Mais"
+                                icon="pi pi-arrow-right" iconPos="right"
+                                styleClass="p-button-outlined p-button-secondary text-secondary"></p-button>
+
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>
+<!-- container-3 -->
+<div class="w-full h-fit bg-[#F7FFED] container-3 pb-4" id="container-3">
+    <div class="header px-4 sm:px-8 md:px-12 pt-8 pb-3">
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">Explore e viaje por 
+            <br class="block sm:hidden"> destinos populares
+        </div>
+        <div class="flex justify-between items-center">
+            <div class="heading text-[22px] sm:text-[30px] leading-6 sm:leading-12 font-semibold">Passeios e Pacotes</div>
+
+        </div>
+    </div>
+    <!-- first details  -->
+    <div class="flex h-96 justify-center items-center " *ngIf="!allTours.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+    </div>
+    <ng-container *ngIf="allTours.length">
+        <div *ngFor="let tours of allTours let i = index" class="details h-full px-4 sm:px-8 md:px-12 mb-2 sm:mb-12 ">
+            <div [ngClass]=" i % 2 === 1 ? 'lg:flex-row-reverse' :'lg:flex-row'"
+                class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col  gap-8"
+                style="box-shadow: 4px 15px 30px 0px #00000014;">
+                <div class="left w-full lg:w-[50%] overflow-hidden group">
+                    <div class="image overflow-hidden rounded-[30px]">
+                        <img [src]="tours?.images[1]"
+                            class="rounded-[30px] w-full object-cover max-h-[220px] lg:max-h-[450px] transition-transform duration-1000 group-hover:scale-110"
+                            alt="image">
+                    </div>
+                </div>
+                <div class="right w-full lg:w-[55%] flex flex-col justify-center">
+                    <div class="">
+                        <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">
+                            {{tours.name}}
+                        </div>
+                        <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
+                        </div>
+                        <div class="text-lg md:text-xl font-semibold leading-5 mb-3">{{tours.title}}</div>
+                        <div class="flex flex-col sm:flex-row mb-6">
+                            <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
+                                <div class="mb-4">
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">
+                                        {{tours.tips[0]?.title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">
+                                        {{tours.tips[0]?.desc1}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">
+                                        {{tours.tips[0]?.desc2}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">
+                                        {{tours.tips[1]?.title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">
+                                        {{tours.tips[1]?.desc1}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">
+                                        {{tours.tips[1]?.desc2}}</div>
+                                </div>
+                            </div>
+                            <div class="w-full sm:w-1/2">
+                                <div class="mb-4">
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">
+                                        {{tours.tips[2]?.title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">
+                                        {{tours.tips[2]?.desc1}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">
+                                        {{tours.tips[2]?.desc2}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">
+                                        {{tours.tips[3]?.title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060]  mb-2">
+                                        {{tours.tips[3]?.desc1}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">
+                                        {{tours.tips[3]?.desc2}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p-button label="Confira agora" icon="pi pi-arrow-right" styleClass="py-3 sm:py-4 px-6"
+                                iconPos="right" (onClick)="toursDetails(tours._id)"></p-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- second details  -->
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+        <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
+            <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
+                <div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Balesin,
+                        Quezon</div>
+                    <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
+                    </div>
+                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Here are your essential Balesin tips for every
+                        month!</div>
+                    <div class="flex flex-col sm:flex-row mb-6">
+                        <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Visiting Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌞 Ideal from
+                                    May-October</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">💨 Avoid July-August
+                                    winds</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Travel Tpis</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🚁 Opt for private
+                                    charters</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🚤 Book island transfers
+                                    in advance</div>
+                            </div>
+                        </div>
+                        <div class="w-full sm:w-1/2">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Packing Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">👒 April essentials: Hat
+                                    & sunglasses</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🩴 Pack waterproof
+                                    footwear for beaches</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Adventure Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">🚴‍♂️ Cycling trails
+                                    are perfect in February</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌿 Explore the island’s
+                                    nature trails in March</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
+                            (onClick)="toursDetails()"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="right w-full lg:w-[50%] order-1 lg:order-2">
+                <div class="image">
+                    <img src="../../../../assets/home/container3/image2.png" class="rounded-[30px] w-full object-cover"
+                        alt="image">
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- third details  -->
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+        <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
+            <div class="left w-full lg:w-[50%]">
+                <div class="image">
+                    <img src="../../../../assets/home/container3/image3.png" class="rounded-[30px] w-full object-cover"
+                        alt="image">
+                </div>
+            </div>
+            <div class="right w-full lg:w-[55%] flex flex-col justify-center">
+                <div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Siargao,
+                        Surigao del Norte
+                    </div>
+                    <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
+                    </div>
+                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Here are your top Siargao tips for every month!
+                    </div>
+                    <div class="flex flex-col sm:flex-row mb-6">
+                        <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Visiting Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌞 Ideal from
+                                    May-October</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌧️ Skip October for
+                                    rains</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Travel Tpis</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">✈️ Fly direct to Siargao
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌟 Hire a local guide
+                                    for hidden gems</div>
+                            </div>
+                        </div>
+                        <div class="w-full sm:w-1/2">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Packing Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🕶️ Essentials:
+                                    Sunglasses & wide-brim hat</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">👟 Pack water shoes for
+                                    rocky shores</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Adventure Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">🏄‍♂️ Catch the best
+                                    surf waves in July</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌿 Discover hidden
+                                    lagoons in the dry season</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
+                            (onClick)="toursDetails()"></p-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- four details  -->
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+        <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
+            <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
+                <div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">El Nido,
+                        Palawan</div>
+                    <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
+                    </div>
+                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Check out these must-have El Nido tips for every
+                        month!</div>
+                    <div class="flex flex-col sm:flex-row mb-6">
+                        <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Visiting Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌞 Best from Dec-Apr
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌧️ Avoid June-Aug rains
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Travel Tpis</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🛫 Opt for direct
+                                    charters</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🏨 Stay beachfront for
+                                    easy access</div>
+                            </div>
+                        </div>
+                        <div class="w-full sm:w-1/2">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Packing Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🕶️ Must-have: Polarized
+                                    shades</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🧥 Lightweight rain
+                                    jacket</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Adventure Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">🚣‍♂️ Discover hidden
+                                    lagoons in February</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌿 Perfect for trekking
+                                    in cooler months</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
+                            (onClick)="toursDetails()"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="right w-full lg:w-[50%] order-1 lg:order-2">
+                <div class="image">
+                    <img src="../../../../assets/home/container3/image4.png" class="rounded-[30px] w-full object-cover"
+                        alt="image">
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- five details  -->
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+        <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
+            <div class="left w-full lg:w-[50%]">
+                <div class="image">
+                    <img src="../../../../assets/home/container3/image5.png" class="rounded-[30px] w-full object-cover"
+                        alt="image">
+                </div>
+            </div>
+            <div class="right w-full lg:w-[55%] flex flex-col justify-center">
+                <div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Coron,
+                        Palawan</div>
+                    <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
+                    </div>
+                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Discover your essential Coron tips for every
+                        month!</div>
+                    <div class="flex flex-col sm:flex-row mb-6">
+                        <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Visiting Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌞 Best from Nov-May
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌧️ Avoid September
+                                    showers</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Travel Tpis</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">✈️ Fly straight to
+                                    Busuanga</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🚤 Book boat tours early
+                                    for popular spots</div>
+                            </div>
+                        </div>
+                        <div class="w-full sm:w-1/2">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Packing Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🕶️ Don’t forget your
+                                    shades</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌊 Pack a waterproof
+                                    phone case</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Adventure Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">🏝️ Discover stunning
+                                    lagoons in February</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🚁 Enjoy helicopter
+                                    tours for a bird’s-eye view</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
+                            (onClick)="toursDetails()"></p-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- six details  -->
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12">
+        <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
+            <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
+                <div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Pamalican
+                        Island Palawan</div>
+                    <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
+                    </div>
+                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Uncover your must-know Pamalican Island
+                        tips for
+                        every month!</div>
+                    <div class="flex flex-col sm:flex-row mb-6">
+                        <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Visiting Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌞 Prime time: Dec-April
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌧️ Avoid August for
+                                    storms</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Travel Tpis</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🛥️ Use resort transfers
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🏖️ Plan for exclusive
+                                    resort stays</div>
+                            </div>
+                        </div>
+                        <div class="w-full sm:w-1/2">
+                            <div class="mb-4">
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Packing Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🕶️ Pack polarized
+                                    sunglasses</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">👒 Don’t forget a
+                                    wide-brim hat</div>
+                            </div>
+                            <div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">Adventure Tips</div>
+                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">🏝️ Explore hidden
+                                    beaches in March</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🐠 Enjoy snorkeling in
+                                    clear waters</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p-button label="Confira agora" icon="pi pi-arrow-right" iconPos="right"
+                            (onClick)="toursDetails()"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="right w-full lg:w-[50%] order-1 lg:order-2">
+                <div class="image">
+                    <img src="../../../../assets/home/container3/image6.png" class="rounded-[30px] w-full object-cover"
+                        alt="image">
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</div>
+<!-- container-4  -->
+<div class="container-4 w-full h-fit bg-white pb-4" id="container-4 z-999">
+    <div class="fixed right-5 bottom-2 bg-white rounded-full">
+       <a href="https://wa.me/+64211542611">  <img 
+          id="whatsappImg" 
+          src="https://static.vecteezy.com/system/resources/thumbnails/024/398/617/small/whatsapp-logo-icon-isolated-on-transparent-background-free-png.png" 
+          alt="WhatsApp Icon" 
+          class="w-[70px] h-[70px] rounded-full"
+        ></a>
+      </div>
+    <div class="header px-4 sm:px-8 md:px-12">
+        <div class="title text-base sm:text-lg sm:leading-6 font-normal text-black">Galeria das nossas viagens</div>
+        <div class="flex justify-between items-center">
+            <div class="heading text-lg mb-2 sm:text-[30px] leading-6 sm:leading-10 font-semibold">Viagens concluídas
+                <span class="text-primary">NÃO</span> são menos que memórias 
+            </div>
+            <!-- <div class="view-all flex items-center text-lg leading-8 font-normal cursor-pointer whitespace-nowrap">View
+                All
+                <svg class="ml-1" width="64" height="64" viewBox="0 0 64 64" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d_359_1932)">
+                        <rect x="16" y="13.5" width="32" height="32" rx="16" fill="white"
+                            shape-rendering="crispEdges" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M41.1653 30.2444C41.5764 29.8333 41.5764 29.1668 41.1653 28.7558L35.5513 23.1417C35.1402 22.7306 34.4737 22.7306 34.0626 23.1417C33.6516 23.5528 33.6516 24.2193 34.0626 24.6304L37.8797 28.4474L23.5789 28.4474C22.9975 28.4475 22.5263 28.9187 22.5263 29.5001C22.5263 30.0814 22.9975 30.5527 23.5789 30.5527L37.8797 30.5527L34.0626 34.3698C33.6516 34.7809 33.6516 35.4474 34.0626 35.8584C34.4737 36.2695 35.1402 36.2695 35.5513 35.8584L41.1653 30.2444Z"
+                            fill="#0E3D4D" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_d_359_1932" x="0.470588" y="0.794117" width="63.0588" height="63.0588"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="2.82353" />
+                            <feGaussianBlur stdDeviation="7.76471" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_359_1932" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_359_1932"
+                                result="shape" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="details  h-full px-4 sm:px-8 md:px-12 mb-12 cursor-pointer">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 ">
+            <div *ngFor="let gallery of galleryData | slice:0:3; let i = index" class="w-full relative group "
+                [routerLink]="['/gallery',gallery?._id]">
+                <!-- this is for shadow  -->
+
+                <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
+                    style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
+                </div>
+
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block "
+                    style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
+                </div>
+
+                <div class="image overflow-hidden rounded-[20px] "
+                    [ngClass]="galleryData.length > 1 ? 'h-[300px]' : 'h-[480px]'">
+                    <img [src]="gallery.thumbnail" alt="image" class="object-cover w-full h-full ">
+                </div>
+
+                <div class="data absolute left-[5%] bottom-[10%]">
+                    <div class="flex flex-wrap mb-4">
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary  mr-2 ">
+                            {{gallery.title}}
+                        </div>
+
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
+                            <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.875 9.75L11.6891 7.4355C11.4234 7.15429 11.0631 6.99632 10.6875 6.99632C10.3119 6.99632 9.95158 7.15429 9.68592 7.4355L3.25 14.25M2.54167 0.75L12.4583 0.75C13.2407 0.75 13.875 1.42157 13.875 2.25L13.875 12.75C13.875 13.5784 13.2407 14.25 12.4583 14.25L2.54167 14.25C1.75926 14.25 1.125 13.5784 1.125 12.75L1.125 2.25C1.125 1.42157 1.75926 0.75 2.54167 0.75ZM6.79167 5.25C6.79167 6.07843 6.1574 6.75 5.375 6.75C4.5926 6.75 3.95833 6.07843 3.95833 5.25C3.95833 4.42157 4.5926 3.75 5.375 3.75C6.1574 3.75 6.79167 4.42157 6.79167 5.25Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            All Photos ({{gallery.images.length}})
+                        </div>
+                    </div>
+
+                    <div class="line flex gap-6 mb-1">
+                        <div class="w-[20%] border "></div>
+                        <div class="w-[50%] border"></div>
+                    </div>
+
+                    <div
+                        class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">
+                        {{gallery.desc}}</div>
+                </div>
+
+            </div>
+
+            <!-- <div class="w-full sm:w-[60%] md:w-[65%] relative group">
+
+
+                <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
+                    style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
+                </div>
+
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block"
+                    style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
+                </div>
+
+                <div class="image overflow-hidden rounded-[20px] h-[300px]">
+                    <img src="../../../../assets/home/container4/img1.png" alt="image"
+                        class="object-cover w-full h-full ">
+                </div>
+
+                <div class="data absolute left-[5%] bottom-[10%]">
+
+                    <div class="flex flex-wrap mb-4">
+                        <div class="title font-bold text-lg sm:text-[28px] text-white mr-2 group-hover:text-primary ">
+                            Boracay
+                        </div>
+
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
+                            <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.875 9.75L11.6891 7.4355C11.4234 7.15429 11.0631 6.99632 10.6875 6.99632C10.3119 6.99632 9.95158 7.15429 9.68592 7.4355L3.25 14.25M2.54167 0.75L12.4583 0.75C13.2407 0.75 13.875 1.42157 13.875 2.25L13.875 12.75C13.875 13.5784 13.2407 14.25 12.4583 14.25L2.54167 14.25C1.75926 14.25 1.125 13.5784 1.125 12.75L1.125 2.25C1.125 1.42157 1.75926 0.75 2.54167 0.75ZM6.79167 5.25C6.79167 6.07843 6.1574 6.75 5.375 6.75C4.5926 6.75 3.95833 6.07843 3.95833 5.25C3.95833 4.42157 4.5926 3.75 5.375 3.75C6.1574 3.75 6.79167 4.42157 6.79167 5.25Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            All Photos (240)
+                        </div>
+                    </div>
+
+                    <div class="line flex gap-6 mb-1">
+                        <div class="w-[20%] border "></div>
+                        <div class="w-[50%] border"></div>
+                    </div>
+
+                    <div
+                        class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">
+                        Boracay is a
+                        small island in the central Philippines. It's known for its resorts and Along the beaches. Along
+                        the west coast,</div>
+                </div>
+
+            </div> -->
+
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 "
+            [ngClass]="galleryData.length==5?'lg:grid-cols-2':'lg:grid-cols-3'">
+
+            <div [routerLink]="['/gallery',gallery?._id]" *ngFor="let gallery of galleryData | slice:3:6; let i = index"
+                class="w-full relative group ">
+                <!-- this is for shadow  -->
+
+                <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
+                    style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
+                </div>
+
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block "
+                    style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
+                </div>
+
+                <div class="image overflow-hidden rounded-[20px] "
+                    [ngClass]="galleryData.length > 1 ? 'h-[300px]' : 'h-[480px]'">
+                    <img [src]="gallery.thumbnail" alt="image" class="object-cover w-full h-full ">
+                </div>
+
+                <div class="data absolute left-[5%] bottom-[10%]">
+                    <div class="flex flex-wrap mb-4">
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary  mr-2 ">
+                            {{gallery.title}}
+                        </div>
+
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
+                            <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.875 9.75L11.6891 7.4355C11.4234 7.15429 11.0631 6.99632 10.6875 6.99632C10.3119 6.99632 9.95158 7.15429 9.68592 7.4355L3.25 14.25M2.54167 0.75L12.4583 0.75C13.2407 0.75 13.875 1.42157 13.875 2.25L13.875 12.75C13.875 13.5784 13.2407 14.25 12.4583 14.25L2.54167 14.25C1.75926 14.25 1.125 13.5784 1.125 12.75L1.125 2.25C1.125 1.42157 1.75926 0.75 2.54167 0.75ZM6.79167 5.25C6.79167 6.07843 6.1574 6.75 5.375 6.75C4.5926 6.75 3.95833 6.07843 3.95833 5.25C3.95833 4.42157 4.5926 3.75 5.375 3.75C6.1574 3.75 6.79167 4.42157 6.79167 5.25Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            All Photos ({{gallery.images.length}})
+                        </div>
+                    </div>
+
+                    <div class="line flex gap-6 mb-1">
+                        <div class="w-[20%] border "></div>
+                        <div class="w-[50%] border"></div>
+                    </div>
+
+                    <div
+                        class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">
+                        {{gallery.desc}}</div>
+                </div>
+
+            </div>
+        </div>
+        <!-- <div class="flex flex-col sm:flex-row gap-4 ">
+            <div class="w-full relative group">
+
+                <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
+                    style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
+                </div>
+
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block"
+                    style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
+                </div>
+
+                <div class="image overflow-hidden h-[300px] rounded-[20px]">
+                    <img src="../../../../assets/home/container4/image3.png" alt="image"
+                        class="object-cover w-full h-full">
+                </div>
+
+                <div class="data absolute left-[5%] bottom-[10%]">
+
+                    <div class="flex flex-wrap mb-4">
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary  mr-2 ">
+                            Puka Beach
+                        </div>
+
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
+                            <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.875 9.75L11.6891 7.4355C11.4234 7.15429 11.0631 6.99632 10.6875 6.99632C10.3119 6.99632 9.95158 7.15429 9.68592 7.4355L3.25 14.25M2.54167 0.75L12.4583 0.75C13.2407 0.75 13.875 1.42157 13.875 2.25L13.875 12.75C13.875 13.5784 13.2407 14.25 12.4583 14.25L2.54167 14.25C1.75926 14.25 1.125 13.5784 1.125 12.75L1.125 2.25C1.125 1.42157 1.75926 0.75 2.54167 0.75ZM6.79167 5.25C6.79167 6.07843 6.1574 6.75 5.375 6.75C4.5926 6.75 3.95833 6.07843 3.95833 5.25C3.95833 4.42157 4.5926 3.75 5.375 3.75C6.1574 3.75 6.79167 4.42157 6.79167 5.25Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            All Photos (240)
+                        </div>
+                    </div>
+
+                    <div class="line flex gap-6 mb-1">
+                        <div class="w-[20%] border "></div>
+                        <div class="w-[50%] border"></div>
+                    </div>
+
+                    <div
+                        class="subTitle font-normal text-sm sm:text-base text-white w-full sm:w-[75%] group-hover:text-primary ">
+                        Boracay is a
+                        small island in the central Philippines. It's known for its resorts and beaches. ......</div>
+                </div>
+
+            </div>
+            <div class="w-full relative group">
+
+                <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
+                    style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
+                </div>
+
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block"
+                    style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
+                </div>
+
+                <div class="image overflow-hidden rounded-[20px] h-[300px]">
+                    <img src="../../../../assets/home/container4/image4.png" alt="image"
+                        class="object-cover w-full h-full ">
+                </div>
+                <div class="data absolute left-[5%] bottom-[10%]">
+
+                    <div class="flex flex-wrap mb-4">
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary mr-2 ">
+                            Lind Boraca
+                        </div>
+
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
+                            <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.875 9.75L11.6891 7.4355C11.4234 7.15429 11.0631 6.99632 10.6875 6.99632C10.3119 6.99632 9.95158 7.15429 9.68592 7.4355L3.25 14.25M2.54167 0.75L12.4583 0.75C13.2407 0.75 13.875 1.42157 13.875 2.25L13.875 12.75C13.875 13.5784 13.2407 14.25 12.4583 14.25L2.54167 14.25C1.75926 14.25 1.125 13.5784 1.125 12.75L1.125 2.25C1.125 1.42157 1.75926 0.75 2.54167 0.75ZM6.79167 5.25C6.79167 6.07843 6.1574 6.75 5.375 6.75C4.5926 6.75 3.95833 6.07843 3.95833 5.25C3.95833 4.42157 4.5926 3.75 5.375 3.75C6.1574 3.75 6.79167 4.42157 6.79167 5.25Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            All Photos (240)
+                        </div>
+                    </div>
+
+                    <div class="line flex gap-6 mb-1">
+                        <div class="w-[20%] border "></div>
+                        <div class="w-[50%] border"></div>
+                    </div>
+
+                    <div
+                        class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">
+                        Boracay is a
+                        small island in the central Philippines. It's known for its resorts and .....</div>
+                </div>
+
+            </div>
+            <div class="w-full relative group">
+
+                <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
+                    style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
+                </div>
+
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block"
+                    style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
+                </div>
+
+                <div class="image overflow-hidden rounded-[20px] h-[300px]">
+                    <img src="../../../../assets/home/container4/image5.png" alt="image"
+                        class="object-cover w-full h-full ">
+                </div>
+
+                <div class="data absolute left-[5%] bottom-[10%]">
+
+                    <div class="flex flex-wrap mb-4">
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary  mr-2 ">
+                            Banaue Rice
+                            Terraces
+                        </div>
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
+                            <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.875 9.75L11.6891 7.4355C11.4234 7.15429 11.0631 6.99632 10.6875 6.99632C10.3119 6.99632 9.95158 7.15429 9.68592 7.4355L3.25 14.25M2.54167 0.75L12.4583 0.75C13.2407 0.75 13.875 1.42157 13.875 2.25L13.875 12.75C13.875 13.5784 13.2407 14.25 12.4583 14.25L2.54167 14.25C1.75926 14.25 1.125 13.5784 1.125 12.75L1.125 2.25C1.125 1.42157 1.75926 0.75 2.54167 0.75ZM6.79167 5.25C6.79167 6.07843 6.1574 6.75 5.375 6.75C4.5926 6.75 3.95833 6.07843 3.95833 5.25C3.95833 4.42157 4.5926 3.75 5.375 3.75C6.1574 3.75 6.79167 4.42157 6.79167 5.25Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            All Photos (240)
+                        </div>
+                    </div>
+
+                    <div class="line flex gap-6 mb-1">
+                        <div class="w-[20%] border "></div>
+                        <div class="w-[50%] border"></div>
+                    </div>
+
+                    <div
+                        class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">
+                        Banaue is a
+                        small island in the central Philippines. It's known for its resorts and beaches....</div>
+                </div>
+
+            </div>
+        </div> -->
+
+        <div class="button my-6 flex justify-center">
+            <p-button (onClick)="scrollToTours()" label="Reserve sua viagem agora" icon="pi pi-arrow-right" iconPos="right"
+                styleClass="px-10 py-3 sm:py-4"></p-button>
+        </div>
+    </div>
+
+</div>
+<!-- container-5  -->
+<div class="container-5 w-full h-fit bg-[#ECFAFF] pb-4">
+    <div class="header px-4 sm:px-8 md:px-12 py-8">
+        <div class="title uppercase text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">Percepções, dicas e
+histórias para
+inspirar suas viagens</div>
+        <div class="flex justify-between items-center">
+            <div class="heading text-lg sm:text-[30px] leading-6 sm:leading-12 font-semibold">Blogues</div>
+        </div>
+    </div>
+    <div class="flex h-96 justify-center items-center " *ngIf="!blogs.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+    </div>
+    <div class="details px-4 sm:px-8 md:px-12 mb-12" *ngIf="blogs.length">
+        <div class="blogs-details">
+            <div class="blogs flex flex-col md:flex-row gap-4 md:gap-8">
+                <div class="blog w-full bg-white cursor-pointer flex flex-col justify-between rounded-[30px] p-4 md:p-6"
+                    style="box-shadow: 0px 7px 20px 0px #00000026;" *ngFor="let blog of blogs"
+                    [routerLink]="['blogs','blog',blog._id]">
+                    <div class="image mb-4 w-full h-full overflow-hidden rounded-2xl group">
+                        <img src="{{blog.images[0]}}" alt="image"
+                            class="w-full h-[250px] rounded-2xl object-cover  transition-transform duration-1000 group-hover:scale-110">
+                    </div>
+                    <div class="title mb-2 text-lg font-semibold">{{blog.title}}</div>
+                    <div class="sbuTitle mb-4 text-base font-normal text-[#475467]">{{blog.subTitle}}</div>
+                    <div class="button">
+                        <p-button label="Leia mais" icon="pi pi-arrow-right" iconPos="right"
+                            [routerLink]="['blogs','blog',blog._id]"
+                            styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- container-6  -->
+<div class="container-6 w-full h-fit pb-4">
+
+    <div class="header px-4 sm:px-8 md:px-12 py-8">
+        <div class="title uppercase text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">Gostaríamos de ouvir
+de você.
+Por favor, preencha este formulário.</div>
+        <div class="flex justify-between items-center">
+            <div class="heading text-lg sm:text-[30px] leading-8 sm:leading-12 font-semibold">Histórias, Questões,
+Sugestões, Experiências e Feedbacks</div>
+        </div>
+    </div>
+
+    <div class="details  bg-white px-4 sm:px-8 md:px-12 mb-12">
+        <div class="relative rounded-[30px] p-4 md:p-8 md:py-12 flex flex-col md:flex-row gap-8 md:gap-16"
+            style="box-shadow: 0px 7px 20px 0px #00000026;">
+            <div class="left w-full  lg:w-[40%]">
+                <div class="image rounded-[30px] overflow-hidden group">
+                    <img src="../../../../assets/home/feedbacks.png" alt="image"
+                        class="w-full min-h-[600px] rounded-[30px] object-cover  transition-transform duration-1000 group-hover:scale-110">
+                </div>
+                <div class="flex justify-center items-center  p-4 bg-white block lg:hidden">
+                    <div class="feedbacks-form  w-[80%] absolute top-[10%] md:top-[30%] bg-white p-4 md:p-8 rounded-xl">
+                        <form [formGroup]="contactForm">
+                            <div class=" flex justify-between gap-4">
+                                <!-- First Name -->
+                                <div class="mb-4 w-full">
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Primeiro
+                                      Nome <span class="text-red-400">*</span></label>
+                                    <input id="firstName" type="text" pInputText formControlName="first_name"
+                                        placeholder="Digite o primeiro nome"
+                                        class="w-full px-4 py-3 border border-[#D0D5DD] rounded-md focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                    <div *ngIf="contactForm.get('first_name')?.invalid && contactForm.get('first_name')?.touched"
+                                        class="text-red-500 text-sm mt-1">O primeiro nome é obrigatório</div>
+                                </div>
+
+                                <!-- Last Name -->
+                                <div class="mb-4 w-full">
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Sobrenome
+                                       <span class="text-red-400">*</span></label>
+                                    <input id="lastName" type="text" pInputText formControlName="last_name"
+                                        placeholder="Digite o sobrenome"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none  focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                    <div *ngIf="contactForm.get('last_name')?.invalid && contactForm.get('last_name')?.touched"
+                                        class="text-red-500 text-sm mt-1">O sobrenome é obrigatório</div>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span
+                                        class="text-red-400">*</span></label>
+                                <input id="email" type="email" pInputText formControlName="email"
+                                    placeholder="Enter email"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none  focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                                    class="text-red-500 text-sm mt-1">É necessário um e-mail válido</div>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="mb-4">
+                                <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Número de telefone
+                                  <span class="text-red-400">*</span></label>
+                                <input id="phoneNumber" type="number" pInputText formControlName="phone"
+                                    placeholder="Digite o telefone"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none  focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
+                                    class="text-red-500 text-sm mt-1">O número de telefone é obrigatório</div>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensagem <span
+                                        class="text-red-400">*</span></label>
+                                <textarea id="message" pInputTextarea rows="4" formControlName="message"
+                                    placeholder="Digite a mensagem"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"></textarea>
+                                <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                                    class="text-red-500 text-sm mt-1">A mensagem é obrigatória</div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="flex justify-center items-center w-full">
+                                <p-button label="Entre em contato" (onClick)="onSubmit()" [disabled]="!contactForm.valid"
+                                    styleClass="  px-6 min-w-[250px] "></p-button>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="right w-[90%] lg:w-[60%] bg-white hidden lg:block">
+                <div class="feedbacks-form">
+                    <form [formGroup]="contactForm">
+                        <div class=" flex justify-between gap-4">
+                            <!-- First Name -->
+                            <div class="mb-4 w-full">
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Primeiro nome
+                                  <span class="text-red-400">*</span></label>
+                                <input id="firstName" type="text" pInputText formControlName="first_name"
+                                    placeholder="Digite o primeiro nome"
+                                    class="w-full px-4 py-3 border border-[#D0D5DD] rounded-md focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                <div *ngIf="contactForm.get('first_name')?.invalid && contactForm.get('first_name')?.touched"
+                                    class="text-red-500 text-sm mt-1">O primeiro nome é obrigatório</div>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="mb-4 w-full">
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Sobrenome
+                                  <span class="text-red-400">*</span></label>
+                                <input id="lastName" type="text" pInputText formControlName="last_name"
+                                    placeholder="Digite o sobrenome"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none  focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                <div *ngIf="contactForm.get('last_name')?.invalid && contactForm.get('last_name')?.touched"
+                                    class="text-red-500 text-sm mt-1">O sobrenome é obrigatório</div>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span
+                                    class="text-red-400">*</span></label>
+                            <input id="email" type="email" pInputText formControlName="email" placeholder="Digite o e-mail"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none  focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                                class="text-red-500 text-sm mt-1">É necessário um e-mail válido</div>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="mb-4">
+                            <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">
+                                Número de telefone <span class="text-red-400">*</span>
+                            </label>
+                            <div class="flex items-center space-x-2">
+                                <p-dropdown [options]="countries" formControlName="country_code" optionLabel="dial_code"
+                                    optionValue="dial_code" class="w-1/6">
+                                    <ng-template let-country pTemplate="selectedItem" class="p-[5px]">
+                                        <div class="flex items-center">
+                                            <span>{{ country.dial_code }}</span>
+                                            <!-- <span class="ml-2">{{ country.name }}</span> -->
+                                        </div>
+                                    </ng-template>
+                                    <ng-template let-country pTemplate="item">
+                                        <div class="flex items-center">
+                                            <span>{{ country.flag }}</span>
+                                            <span class="ml-2">{{ country.name }} ({{ country.dial_code }})</span>
+                                        </div>
+                                    </ng-template>
+                                </p-dropdown>
+                                <span class="p-input-icon-left w-full">
+                                    <i class="pi pi-phone" style="font-size: 1.2rem; color: #cacaca;"></i>
+                                    <input id="phoneNumber" type="text" pInputText formControlName="phone"
+                                        (input)="formatPhoneNumber()" placeholder="Digite o número de telefone"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                </span>
+                            </div>
+                            <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
+                                class="text-red-500 text-sm mt-1">
+                                O número de telefone é obrigatório
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensagem <span
+                                    class="text-red-400">*</span></label>
+                            <textarea id="message" pInputTextarea rows="8" formControlName="message"
+                                placeholder="Digite a mensagem"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"></textarea>
+                            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                                class="text-red-500 text-sm mt-1">A mensagem é obrigatória</div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <p-button label="Entre em contato" (onClick)="onSubmit()" [disabled]="!contactForm.valid"
+                            styleClass=" py-4 px-6 w-full"></p-button>
+
+                    </form>
+
+                </div>
+            </div>
+            <div class="arrow absolute bottom-2 left-0 hidden lg:block">
+                <svg class=" w-[600px] 2xl:w-[800px] " height="130" viewBox="0 0 614 130" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M573.344 29.1224C574.625 26.7428 574.151 27.1369 579.011 26.7492C583.305 26.496 581.616 27.5565 584.384 24.411C586.863 21.5173 591.307 17.9026 593.183 15.6723C591.61 14.1179 581.759 10.753 579.002 8.89962C579.562 8.327 580.009 7.86836 580.635 7.27089C581.599 6.33026 581.327 6.42982 582.968 6.7089C586.546 7.23366 598.009 8.90499 600.193 8.98643C602.32 7.02996 607.779 1.35276 610.131 0.637466C611.24 0.303207 613.099 -0.0849195 613.232 1.33619C613.517 4.83162 608.191 8.77064 604.919 11.8078C603.599 13.026 603.981 12.8119 604.236 14.5566C604.469 16.4546 606.549 30.092 606.176 30.9625C605.976 31.2562 604.183 32.8689 603.849 33.2126C603.217 32.1212 602.607 30.8761 602.087 29.6712L598.773 22.7321C598.345 21.5666 597.642 20.2817 597.035 19.256C595.581 20.7442 594.079 22.1035 592.556 23.6169C584.992 31.0951 585.595 27.7138 585.206 33.1464C584.933 36.1853 585.504 37.7399 582.717 38.3202C581.292 32.966 578.614 30.2742 573.344 29.1224ZM577.663 34.8111C578.559 34.1144 577.607 32.7754 576.55 33.4564L575.179 34.5465C574.326 35.154 575.166 36.6089 576.268 35.8377L577.663 34.8111ZM388.21 64.7213C387.092 64.3969 386.549 66.066 387.646 66.3252L388.536 66.6584C389.746 67.0235 390.198 65.3152 389.169 65.03L388.21 64.7213ZM394.196 66.5669C393.075 66.2427 392.535 67.9108 393.584 68.2597L395.298 68.7331C396.417 69.0579 396.983 67.4545 395.863 67.1303L394.196 66.5669ZM400.934 68.5756C399.884 68.2263 399.249 69.8546 400.369 70.1788L402.081 70.653C403.199 70.9763 403.834 69.3473 402.623 68.9843L400.934 68.5756ZM407.714 70.2764C406.551 70.0405 406.166 71.7247 407.264 71.9834L408.951 72.394C410.184 72.6016 410.564 70.9191 409.402 70.6839L407.714 70.2764ZM414.604 71.8625C413.441 71.6273 413.059 73.3097 414.154 73.5702L415.885 73.8901C417.049 74.1237 417.431 72.4407 416.337 72.1823L414.604 71.8625ZM421.493 73.2286C420.396 72.9701 419.923 74.6128 421.109 74.9122L422.91 75.2061C423.914 75.4259 424.455 73.7584 423.201 73.483L421.493 73.2286ZM428.444 74.3518C427.235 74.2082 427.081 75.881 428.128 76.0105L429.93 76.3048C431.112 76.3846 431.337 74.6864 430.22 74.582L428.444 74.3518ZM435.459 75.232C434.276 75.1507 434.028 76.7861 435.236 76.9301L436.988 77.0956C438.197 77.2392 438.327 75.5021 437.212 75.3952L435.459 75.232ZM442.542 75.8652C441.357 75.7858 441.134 77.4842 442.316 77.5637L444.071 77.7288C445.186 77.834 445.476 76.111 444.295 76.0312L442.542 75.8652ZM449.549 76.3063C448.32 76.3165 448.325 78.0049 449.485 78.0204L451.213 78.121C452.442 78.1097 452.482 76.3321 451.345 76.3823L449.549 76.3063ZM456.665 76.4138C455.507 76.3982 455.376 78.1356 456.626 78.1919L458.377 78.1367C459.534 78.1526 459.599 76.4396 458.44 76.4243L456.665 76.4138ZM463.714 76.3261C462.441 76.4255 462.696 78.1685 463.742 78.078L465.558 78.0002C466.831 77.9001 466.599 76.223 465.53 76.2476L463.714 76.3261ZM470.823 75.9957C469.62 76.0703 469.784 77.7723 470.896 77.6585L472.691 77.5141C473.893 77.4413 473.797 75.7128 472.617 75.8517L470.823 75.9957ZM477.883 75.314C476.838 75.4045 476.775 77.1169 478.048 77.0182L479.815 76.8096C481.133 76.6193 480.742 74.9269 479.652 75.1056L477.883 75.314ZM484.914 74.3501C483.759 74.5544 484.084 76.2729 485.171 76.0944L486.986 75.7951C488.141 75.5916 487.844 73.9377 486.687 74.1428L484.914 74.3501ZM491.945 73.1668C490.858 73.3453 491.019 75.0509 492.244 74.8206C492.834 74.7517 493.399 74.6171 494.059 74.5224C495.055 74.3036 494.958 72.5761 493.736 72.8043C493.1 72.9647 492.51 73.0329 491.945 73.1668ZM498.948 71.7004C497.745 71.9952 498.18 73.5984 499.313 73.3283L501.011 72.9275C502.212 72.6332 501.755 70.9635 500.644 71.2973L498.948 71.7004ZM505.83 69.9107C504.698 70.1784 505.088 71.8711 506.287 71.5787L508.031 71.0856C509.07 70.7779 508.772 69.1242 507.505 69.4426L505.83 69.9107ZM512.617 67.86C511.463 68.2834 512.125 69.8773 513.143 69.5037L514.864 68.9469C516.015 68.5245 515.445 66.97 514.337 67.3019L512.617 67.86ZM519.403 65.5906C518.317 65.989 518.819 67.5689 519.997 67.2101C520.539 67.0113 521.149 66.7875 521.691 66.5887C522.71 66.2149 522.25 64.546 521.097 64.9691C520.487 65.1929 519.945 65.3917 519.403 65.5906ZM526.067 62.999C524.87 63.5117 525.669 65.0564 526.729 64.5945L528.333 63.9313C529.462 63.4434 528.732 61.8755 527.671 62.3374L526.067 62.999ZM532.595 60.237C531.532 60.7 532.194 62.2939 533.3 61.7413L534.95 60.9893C536.01 60.5267 535.304 59.0227 534.244 59.4863L532.595 60.237ZM539.001 57.1512C538.033 57.6531 538.694 59.2482 539.799 58.6959C540.319 58.4315 540.904 58.1431 541.422 57.8786C542.417 57.4405 541.755 55.8467 540.648 56.4003C540.131 56.6631 539.613 56.9269 539.001 57.1512ZM545.362 53.9363C544.281 54.5531 545.258 55.9577 546.203 55.3909L547.804 54.5103C548.816 53.9185 547.908 52.4871 546.963 53.0542L545.362 53.9363ZM551.605 50.3969C550.59 50.9898 551.432 52.4438 552.446 51.8507L554.044 50.9712C554.992 50.403 554.127 48.883 553.112 49.4771L551.605 50.3969ZM557.638 46.7136C556.693 47.2807 557.557 48.8002 558.615 48.1182L560.124 47.1976C561.156 46.4505 560.068 45.1601 559.147 45.7915L557.638 46.7136ZM563.603 42.8364C562.635 43.5578 563.658 44.8717 564.58 44.2404L566.132 43.2294C567.098 42.5081 566.078 41.1931 565.086 41.8502L563.603 42.8364ZM569.426 38.7888C568.504 39.4201 569.481 40.8263 570.472 40.1672L571.932 39.118C572.855 38.4853 571.92 36.9916 570.888 37.738L569.426 38.7888Z"
+                        fill="#869F44" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M194.038 81.906C193.093 82.5392 193.94 83.9447 195.043 83.3386L196.49 82.3456C197.384 81.7985 196.658 80.2851 195.503 80.9782L194.038 81.906ZM384.836 65.3652C385.924 65.7681 386.59 64.1382 385.518 63.8018L384.657 63.4059C383.48 62.9558 382.902 64.6314 383.904 64.989L384.836 65.3652ZM379.018 63.0985C380.109 63.5015 380.773 61.8723 379.755 61.4497L378.085 60.8557C376.996 60.4522 376.311 62.0148 377.402 62.4178L379.018 63.0985ZM372.465 60.6158C373.483 61.039 374.238 59.4562 373.147 59.0532L371.48 58.4585C370.391 58.0565 369.637 59.64 370.814 60.0882L372.465 60.6158ZM365.846 58.4379C366.985 58.7556 367.496 57.0994 366.423 56.7634L364.775 56.2342C363.564 55.9398 363.058 57.5946 364.197 57.9116L365.846 58.4379ZM359.109 56.3669C360.248 56.6839 360.756 55.0294 359.686 54.6917L357.988 54.25C356.847 53.9344 356.339 55.5897 357.409 55.9251L359.109 56.3669ZM352.357 54.5158C353.428 54.8515 354.024 53.2429 352.866 52.8601L351.096 52.4394C350.114 52.149 349.45 53.7775 350.676 54.1411L352.357 54.5158ZM345.525 52.9032C346.717 53.132 346.996 51.4708 345.964 51.2676L344.193 50.8464C343.023 50.6833 342.671 52.3648 343.774 52.5479L345.525 52.9032ZM338.61 51.529C339.781 51.6936 340.151 50.0764 338.96 49.8474L337.229 49.5585C336.037 49.3297 335.776 51.0568 336.878 51.2423L338.61 51.529ZM331.609 50.3967C332.783 50.5597 333.133 48.8779 331.962 48.715L330.228 48.4263C329.127 48.2425 328.707 49.9442 329.878 50.1073L331.609 50.3967ZM324.67 49.462C325.893 49.5384 326.016 47.8505 324.862 47.7532L323.15 47.5309C321.927 47.4554 321.752 49.2294 322.887 49.2593L324.67 49.462ZM317.596 48.8529C318.747 48.9501 319.009 47.2228 317.769 47.0784L316.023 47.0101C314.872 46.9127 314.678 48.6203 315.831 48.7172L317.596 48.8529ZM310.575 48.4437C311.849 48.4341 311.727 46.6739 310.68 46.6906L308.866 46.6403C307.592 46.6507 307.696 48.3433 308.761 48.3941L310.575 48.4437ZM303.475 48.2727C304.678 48.283 304.643 46.5702 303.529 46.6057L301.731 46.6234C300.529 46.6115 300.494 48.3459 301.678 48.2903L303.475 48.2727ZM296.397 48.4564C297.445 48.4397 297.637 46.7326 296.362 46.7414L294.588 46.8254C293.262 46.9227 293.523 48.6419 294.621 48.5401L296.397 48.4564ZM289.328 48.9243C290.493 48.8015 290.3 47.0609 289.204 47.1628L287.375 47.3339C286.21 47.4559 286.381 49.13 287.548 49.0066L289.328 48.9243ZM282.242 49.6114C283.337 49.5096 283.306 47.7935 282.069 47.9373C281.477 47.9646 280.904 48.0593 280.24 48.1074C279.232 48.2559 279.198 49.9894 280.432 49.8474C281.077 49.7319 281.669 49.7054 282.242 49.6114ZM275.162 50.5835C276.381 50.3736 276.069 48.7405 274.921 48.9305L273.201 49.2115C271.983 49.421 272.312 51.1221 273.443 50.8667L275.162 50.5835ZM268.178 51.8871C269.324 51.6993 269.064 49.9799 267.849 50.1877L266.076 50.5576C265.019 50.792 265.19 52.4659 266.475 52.237L268.178 51.8871ZM261.268 53.4584C262.448 53.1165 261.91 51.4768 260.869 51.7784L259.114 52.2137C257.937 52.5547 258.387 54.1487 259.514 53.895L261.268 53.4584ZM254.343 55.2484C255.454 54.9267 255.075 53.3123 253.875 53.5878C253.32 53.7483 252.696 53.929 252.142 54.0895C251.1 54.3913 251.431 56.0918 252.611 55.7501C253.235 55.5694 253.789 55.4089 254.343 55.2484ZM247.516 57.369C248.745 56.9408 248.068 55.3406 246.978 55.7275L245.331 56.2774C244.171 56.6854 244.779 58.304 245.869 57.9171L247.516 57.369ZM240.811 59.6694C241.904 59.2816 241.366 57.6418 240.222 58.1162L238.523 58.7515C237.434 59.1391 238.023 60.6921 239.113 60.3035L240.811 59.6694ZM234.202 62.3022C235.204 61.8688 234.667 60.2279 233.524 60.702C232.987 60.9295 232.383 61.1766 231.848 61.4045C230.824 61.7721 231.362 63.4119 232.506 62.9366C233.041 62.7104 233.577 62.4833 234.202 62.3022ZM227.629 65.0671C228.751 64.5268 227.885 63.054 226.902 63.5539L225.242 64.3212C224.19 64.8414 224.986 66.3361 225.969 65.8359L227.629 65.0671ZM221.148 68.1647C222.204 67.6437 221.476 66.131 220.422 66.6523L218.765 67.4188C217.778 67.9199 218.525 69.5001 219.579 68.9778L221.148 68.1647ZM214.866 71.421C215.85 70.9208 215.104 69.341 214 69.9481L212.429 70.7619C211.345 71.4359 212.33 72.8023 213.295 72.2363L214.866 71.421ZM208.637 74.8757C209.655 74.223 208.736 72.8376 207.771 73.4036L206.15 74.3047C205.134 74.9575 206.05 76.3438 207.087 75.7569L208.637 74.8757ZM202.536 78.5109C203.501 77.9449 202.635 76.4705 201.599 77.0594L200.067 78.0052C199.1 78.5725 199.918 80.1314 201.001 79.4581L202.536 78.5109Z"
+                        fill="#869F44" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M190.873 86.1844C191.77 85.4877 190.817 84.1487 189.76 84.8296L188.39 85.9197C187.537 86.5273 188.377 87.9822 189.479 87.211L190.873 86.1844ZM1.42022 116.095C0.302222 115.77 -0.240507 117.439 0.856215 117.699L1.74687 118.032C2.95698 118.397 3.40813 116.689 2.3799 116.403L1.42022 116.095ZM7.4064 117.94C6.28584 117.616 5.74539 119.284 6.79437 119.633L8.50823 120.106C9.62724 120.431 10.194 118.828 9.07346 118.504L7.4064 117.94ZM14.1444 119.949C13.0944 119.6 12.4596 121.228 13.5801 121.552L15.2916 122.026C16.4101 122.35 17.0448 120.721 15.8336 120.358L14.1444 119.949ZM20.9247 121.65C19.7619 121.414 19.3765 123.098 20.4747 123.357L22.1611 123.767C23.3941 123.975 23.775 122.292 22.6126 122.057L20.9247 121.65ZM27.8145 123.236C26.6521 123.001 26.2694 124.683 27.3649 124.943L29.0953 125.263C30.2598 125.497 30.6422 123.814 29.5475 123.556L27.8145 123.236ZM34.7036 124.602C33.6071 124.343 33.1337 125.986 34.3197 126.286L36.1211 126.579C37.1245 126.799 37.6652 125.132 36.4116 124.856L34.7036 124.602ZM41.6543 125.725C40.4456 125.581 40.2919 127.254 41.3384 127.384L43.1409 127.678C44.3227 127.758 44.5477 126.06 43.4307 125.955L41.6543 125.725ZM48.6694 126.605C47.487 126.524 47.239 128.159 48.4469 128.303L50.1987 128.469C51.4074 128.612 51.5374 126.875 50.4228 126.768L48.6694 126.605ZM55.7525 127.239C54.5674 127.159 54.3442 128.857 55.5268 128.937L57.2818 129.102C58.3966 129.207 58.6872 127.484 57.5054 127.404L55.7525 127.239ZM62.7592 127.68C61.5306 127.69 61.5352 129.378 62.696 129.394L64.424 129.494C65.653 129.483 65.6928 127.705 64.5562 127.756L62.7592 127.68ZM69.8758 127.787C68.7176 127.772 68.5867 129.509 69.837 129.565L71.5876 129.51C72.7451 129.526 72.8095 127.813 71.6505 127.798L69.8758 127.787ZM76.9243 127.699C75.6513 127.799 75.9067 129.542 76.9522 129.451L78.7691 129.374C80.0418 129.273 79.8098 127.596 78.7409 127.621L76.9243 127.699ZM84.0338 127.369C82.8306 127.444 82.9946 129.146 84.1062 129.032L85.9012 128.887C87.1041 128.815 87.0076 127.086 85.828 127.225L84.0338 127.369ZM91.0941 126.687C90.0485 126.778 89.9856 128.49 91.2589 128.392L93.026 128.183C94.3436 127.993 93.9526 126.3 92.863 126.479L91.0941 126.687ZM98.1246 125.723C96.9699 125.928 97.2943 127.646 98.3813 127.468L100.197 127.168C101.352 126.965 101.054 125.311 99.8973 125.516L98.1246 125.723ZM105.155 124.54C104.068 124.719 104.229 126.424 105.455 126.194C106.045 126.125 106.61 125.99 107.27 125.896C108.266 125.677 108.169 123.949 106.947 124.178C106.311 124.338 105.721 124.406 105.155 124.54ZM112.158 123.074C110.955 123.368 111.391 124.972 112.524 124.702L114.222 124.301C115.423 124.006 114.966 122.337 113.855 122.671L112.158 123.074ZM119.04 121.284C117.909 121.552 118.299 123.244 119.498 122.952L121.241 122.459C122.281 122.151 121.983 120.497 120.716 120.816L119.04 121.284ZM125.828 119.233C124.674 119.657 125.336 121.251 126.354 120.877L128.075 120.32C129.226 119.898 128.656 118.343 127.548 118.675L125.828 119.233ZM132.614 116.964C131.528 117.362 132.029 118.942 133.208 118.583C133.75 118.385 134.36 118.161 134.902 117.962C135.92 117.588 135.461 115.919 134.307 116.342C133.698 116.566 133.156 116.765 132.614 116.964ZM139.278 114.372C138.081 114.885 138.879 116.43 139.939 115.968L141.544 115.305C142.673 114.817 141.942 113.249 140.882 113.711L139.278 114.372ZM145.805 111.61C144.742 112.073 145.404 113.667 146.511 113.115L148.161 112.363C149.221 111.9 148.515 110.396 147.454 110.86L145.805 111.61ZM152.212 108.524C151.243 109.026 151.904 110.621 153.01 110.069C153.53 109.805 154.115 109.516 154.633 109.252C155.628 108.814 154.966 107.22 153.859 107.774C153.341 108.036 152.823 108.3 152.212 108.524ZM158.573 105.31C157.492 105.926 158.469 107.331 159.413 106.764L161.014 105.884C162.027 105.292 161.118 103.86 160.173 104.428L158.573 105.31ZM164.816 101.77C163.8 102.363 164.642 103.817 165.656 103.224L167.254 102.344C168.203 101.776 167.337 100.256 166.323 100.85L164.816 101.77ZM170.849 98.0868C169.903 98.654 170.768 100.173 171.825 99.4915L173.335 98.5709C174.367 97.8238 173.279 96.5334 172.357 97.1647L170.849 98.0868ZM176.814 94.2097C175.845 94.9311 176.868 96.245 177.79 95.6137L179.343 94.6027C180.309 93.8814 179.289 92.5664 178.296 93.2235L176.814 94.2097ZM182.637 90.1621C181.715 90.7934 182.692 92.1996 183.683 91.5405L185.143 90.4913C186.066 89.8586 185.131 88.3649 184.099 89.1113L182.637 90.1621Z"
+                        fill="#869F44" />
+                </svg>
+
+            </div>
+        </div>
+    </div>
+    <p-toast></p-toast>
+</div>

@@ -1,0 +1,27 @@
+.container-1 {
+    background-image: url('../../../../../assets/tours/banner.png');
+    max-height: 800px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .left-arrow:active,
+    .left-arrow:focus {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+        /* Smooth transition effect */
+    }
+    
+    .right-arrow:active,
+    .right-arrow:focus {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+        /* Smooth transition effect */
+    }
+}
+.pi {
+    line-height: unset;
+}
+
+.pi-spin {
+    animation: fa-spin 1s infinite linear;
+}

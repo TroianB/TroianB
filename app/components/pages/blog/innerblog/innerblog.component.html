@@ -1,0 +1,66 @@
+<!-- below for inner blog  -->
+<div class="container-2 w-full h-fit pt-10">
+    <div class="header px-4 sm:px-8 md:px-12 pt-12 sm:pt-16 pb-6">
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-4">Home<span class="text-primary">
+                > Blogs</span>
+        </div>
+        <div class="flex h-screen justify-center items-center " *ngIf="!blog">
+            <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+        </div>
+        <div class="flex justify-between items-center relative" *ngIf="blog">
+            <div class="heading  text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium"
+                [innerHTML]="blog?.title">
+            </div>
+            <div class="share  right-[5%] top-[150%] sm:top-[5%]">
+                <div class="bg-[#F7FAED] rounded-2xl px-3 py-1 flex items-center text-primary cursor-pointer"
+                    (click)="shareLink(blog._id)">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M11.6667 4.1665V7.49984C5.83333 8.33317 3.33333 12.4998 2.5 16.6665C4.58333 13.7498 7.5 12.4165 11.6667 12.4165V15.8332L17.5 9.99984L11.6667 4.1665ZM13.3333 8.1915L15.1417 9.99984L13.3333 11.8082V10.7498H11.6667C9.94167 10.7498 8.39167 11.0665 6.95 11.5415C8.11667 10.3832 9.61667 9.47484 11.9 9.1665L13.3333 8.9415V8.1915Z"
+                            fill="#869F44" />
+                    </svg>
+
+                    Share
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="details px-4 sm:px-8 md:px-12 mb-12">
+        <div class="image overflow-hidden mb-6 sm:mb-8 md:mb-10 ">
+            <img class="w-full max-h-screen object-cover rounded-xl " [src]="blog?.images[0]" alt="banner image">
+        </div>
+        <div class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]"
+            style="text-align: justify;
+    word-break: normal;">
+            {{blog?.content[0].desc}}<br><br>{{blog?.content[1].desc}}
+        </div>
+
+        <div class="px-4 sm:px-8 md:px-12 text-lg mb-6 sm:mb-8 md:mb-10 font-normal text-[#666666]">
+            <div class="px-2 sm:px-10">
+                <blockquote class="px-4 text-lg sm:text-xl md:text-[24px] font-normal border-l-4 border-[#7C4EE4] mb-4"
+                    style="text-align: justify;
+    word-break: normal;">
+                    {{blog?.quote.content}}
+                </blockquote>
+                <footer class="text-lg text-[#333333] font-medium">– {{blog?.quote.name}}</footer>
+            </div>
+        </div>
+        <div class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]"
+            style="text-align: justify;
+    word-break: normal;">
+            {{blog?.content[2].desc}}
+        </div>
+        <div class="px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10">
+            <div class="image overflow-hidden px-4 sm:px-8 md:px-12 ">
+                <img class="w-full max-h-96 object-cover rounded-xl" [src]="blog?.images[1]" alt="banner image">
+            </div>
+        </div>
+        <div class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]"
+            style="text-align: justify;
+    word-break: normal;">
+            {{blog?.content[3].desc}}
+        </div>
+
+    </div>
+</div>
